@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A comprehensive chronological journey across 13.8 billion years of cosmic history â€” from the Big Bang to humanity's future in deep space.">
+  <title>Cosmic Timeline â€” COSMOS Space Exploration</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particle-canvas"></canvas>
+  <div class="cosmic-noise-overlay"></div>
+  <div class="shooting-star-container"></div>
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-ring"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="cosmic-container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="COSMOS Homepage">
+        <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+        <span class="logo-sub">Explore the Unknown</span>
+      </a>
+
+      <nav class="main-nav" role="navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="solar-system.html" class="nav-link">Solar System</a></li>
+          <li class="nav-item"><a href="planets.html" class="nav-link">Planets</a></li>
+          <li class="nav-item"><a href="black-holes.html" class="nav-link">Black Holes</a></li>
+          <li class="nav-item"><a href="galaxies.html" class="nav-link">Galaxies</a></li>
+          <li class="nav-item"><a href="space-missions.html" class="nav-link">Missions</a></li>
+          <li class="nav-item"><a href="astronauts.html" class="nav-link">Astronauts</a></li>
+          <li class="nav-item"><a href="space-timeline.html" class="nav-link active">Timeline</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="search.html" class="icon-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a>
+        <button class="sound-toggle" aria-label="Toggle Sound"><span class="sound-dot"></span><span class="sound-text">SOUND OFF</span></button>
+        <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" role="dialog">
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item"><a href="solar-system.html" class="mobile-nav-link">Solar System</a></li>
+      <li class="mobile-nav-item"><a href="planets.html" class="mobile-nav-link">Planets</a></li>
+      <li class="mobile-nav-item"><a href="black-holes.html" class="mobile-nav-link">Black Holes</a></li>
+      <li class="mobile-nav-item"><a href="galaxies.html" class="mobile-nav-link">Galaxies</a></li>
+      <li class="mobile-nav-item"><a href="space-missions.html" class="mobile-nav-link">Missions</a></li>
+      <li class="mobile-nav-item"><a href="astronauts.html" class="mobile-nav-link">Astronauts</a></li>
+      <li class="mobile-nav-item"><a href="space-timeline.html" class="mobile-nav-link active">Timeline</a></li>
+      <li class="mobile-nav-item"><a href="search.html" class="mobile-nav-link">Search Terminal</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="cosmic-container">
+        <span class="section-tag reveal-up">THE GRAND CHRONOLOGY</span>
+        <h1 class="section-title reveal-up delay-1">THE SPACE <span class="gradient-text">TIMELINE</span></h1>
+        <p class="section-subtitle reveal-up delay-2">
+          From the initial Planck epoch of the Big Bang to the formation of stars, human space exploration, and our destiny across the interstellar horizon.
+        </p>
+      </div>
+    </section>
+
+    <!-- Timeline Filter Tabs -->
+    <section class="section-spacing" style="padding-top: 0;">
+      <div class="cosmic-container">
+        <div class="filter-tabs reveal-up" id="era-filters">
+          <button class="filter-btn active" data-era="all">ALL ERAS</button>
+          <button class="filter-btn" data-era="primordial">PRIMORDIAL COSMOS</button>
+          <button class="filter-btn" data-era="stellar">STELLAR &amp; SOLAR</button>
+          <button class="filter-btn" data-era="space-age">THE SPACE AGE</button>
+          <button class="filter-btn" data-era="future">DEEP FUTURE</button>
+        </div>
+
+        <!-- Vertical Timeline Track -->
+        <div class="timeline-vertical" id="timeline-track">
+
+          <!-- Event 1: Big Bang -->
+          <div class="timeline-item reveal-left timeline-entry" data-era-group="primordial">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">13.8 BILLION YEARS AGO</span>
+              <h3 class="timeline-title">THE BIG BANG &amp; COSMIC INFLATION</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                Spacetime, energy, and fundamental physical laws originate from a gravitational singularity. In the first fraction of a second, cosmic inflation expands the universe exponentially by a factor of at least \(10^{26}\).
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 2: First Stars -->
+          <div class="timeline-item reveal-right timeline-entry" data-era-group="primordial">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">13.6 BILLION YEARS AGO</span>
+              <h3 class="timeline-title">POPULATION III STARS &amp; REIONIZATION</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                The first gargantuan stars of pure primordial hydrogen and helium ignite, ending the Cosmic Dark Ages and seeding the universe with the first heavy chemical elements through hypernovae.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 3: Sun Formation -->
+          <div class="timeline-item reveal-left timeline-entry" data-era-group="stellar">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">4.6 BILLION YEARS AGO</span>
+              <h3 class="timeline-title">FORMATION OF THE SUN</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                A dense interstellar molecular cloud collapses, forming our proto-Sun. The leftover accretion disc forms a spinning protoplanetary nebula where dust grains collide and coalesce into planetesimals.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 4: Earth & Theia Impact -->
+          <div class="timeline-item reveal-right timeline-entry" data-era-group="stellar">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">4.5 BILLION YEARS AGO</span>
+              <h3 class="timeline-title">EARTH &amp; THE THEIA IMPACT</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                Proto-Earth collides with a Mars-sized planet named Theia. Ejected molten debris coalesces in orbit to form the Moon, stabilizing Earth's axial tilt and generating the tidal rhythms that drive marine life.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 5: Telescope Era -->
+          <div class="timeline-item reveal-left timeline-entry" data-era-group="space-age">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">1609 CE</span>
+              <h3 class="timeline-title">GALILEO'S TELESCOPE</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                Galileo Galilei points an optical spyglass toward the night sky, discovering the four major moons of Jupiter (Io, Europa, Ganymede, Callisto), dismantling the geocentric model of the universe forever.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 6: Sputnik 1 -->
+          <div class="timeline-item reveal-right timeline-entry" data-era-group="space-age">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">1957 CE</span>
+              <h3 class="timeline-title">SPUTNIK 1 &amp; THE DAWN OF THE SPACE AGE</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                The first artificial orbital satellite is placed into Low Earth Orbit by the Soviet Union, broadcasting radio pulses across the globe and launching the international Space Race.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 7: Apollo 11 -->
+          <div class="timeline-item reveal-left timeline-entry" data-era-group="space-age">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">1969 CE</span>
+              <h3 class="timeline-title">APOLLO 11: FOOTSTEPS ON THE MOON</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                Neil Armstrong and Buzz Aldrin become the first humans to stand on another world. "One small step for man, one giant leap for mankind."
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 8: Voyager 1 -->
+          <div class="timeline-item reveal-right timeline-entry" data-era-group="space-age">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">1977 CE</span>
+              <h3 class="timeline-title">VOYAGER 1 VOYAGE TO INTERSTELLAR SPACE</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                Launched to conduct flybys of Jupiter and Saturn, Voyager 1 goes on to become the farthest human-made object from Earth, crossing the heliopause in 2012 into the open interstellar void.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 9: JWST -->
+          <div class="timeline-item reveal-left timeline-entry" data-era-group="space-age">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">2021 CE</span>
+              <h3 class="timeline-title">JAMES WEBB SPACE TELESCOPE AT L2</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                The 6.5m infrared flagship deploys flawlessly at Sun-Earth L2, analyzing exoplanet atmospheres for water vapor and detecting galaxies that formed less than 300 million years after the Big Bang.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 10: Artemis & Mars -->
+          <div class="timeline-item reveal-right timeline-entry" data-era-group="future">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">2026+ CE</span>
+              <h3 class="timeline-title">ARTEMIS LUNAR BASE &amp; MARS VOYAGES</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                Permanent human scientific habitation established at the Moon's South Pole to harvest ice. First crewed interplanetary voyages launched toward the Martian red sands.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 11: Interstellar Civilization -->
+          <div class="timeline-item reveal-left timeline-entry" data-era-group="future">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">DEEP FUTURE</span>
+              <h3 class="timeline-title">INTERSTELLAR HUMANITY &amp; DYSON SWARMS</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">
+                Harnessing solar power through megastructures, autonomous laser-sail probes journeying to Proxima Centauri b, and human civilization taking root across multiple star systems.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <!-- ==========================================================================
+       ENORMOUS CINEMATIC FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-horizon-glow"></div>
+    <div class="cosmic-container">
+      <div class="footer-top">
+        <div class="footer-callout">
+          <h3>READY TO EXPLORE THE UNKNOWN?</h3>
+          <p>Join millions across Earth discovering worlds beyond our atmosphere.</p>
+        </div>
+        <a href="solar-system.html" class="cosmic-btn cosmic-btn-primary">
+          LAUNCH MISSION <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+            <span class="logo-sub">Explore the Unknown</span>
+          </a>
+          <p class="footer-about-text">
+            An ultra-premium interactive astronomical observatory platform engineered for scientific wonder, documentary realism, and interstellar discovery.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan);">
+            STATION STATUS: ONLINE • ALL ARRAYS OPERATIONAL
+          </div>
+        </div>
+
+        <!-- Col 2: Explore -->
+        <div>
+          <h4 class="footer-col-title">EXPLORE</h4>
+          <ul class="footer-links">
+            <li><a href="solar-system.html">Solar System</a></li>
+            <li><a href="planets.html">All Planets</a></li>
+            <li><a href="galaxies.html">Galaxies Database</a></li>
+            <li><a href="black-holes.html">Black Hole Singularities</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Discover -->
+        <div>
+          <h4 class="footer-col-title">DISCOVER</h4>
+          <ul class="footer-links">
+            <li><a href="space-missions.html">Space Missions</a></li>
+            <li><a href="astronauts.html">Astronaut Pioneers</a></li>
+            <li><a href="space-timeline.html">Cosmic Timeline</a></li>
+            <li><a href="search.html">Search Terminal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Project -->
+        <div>
+          <h4 class="footer-col-title">OBSERVATORY</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Project</a></li>
+            <li><a href="planet-details.html?planet=jupiter">Featured Planet</a></li>
+            <li><a href="galaxy-details.html?galaxy=andromeda">Featured Galaxy</a></li>
+            <li><a href="mission-details.html?mission=jwst">Featured Mission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Telemetry Dispatch -->
+        <div>
+          <h4 class="footer-col-title">TELEMETRY DISPATCH</h4>
+          <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.6;">
+            Subscribe to receive real-time planetary observations, rover alerts, and deep-space telemetry direct to your interface.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Telemetry channel confirmed. You are registered on the COSMOS frequency.');">
+            <input type="email" placeholder="Enter observer email..." class="footer-input" required>
+            <button type="submit" class="cosmic-btn cosmic-btn-primary" style="padding: 0.75rem 1.25rem;">JOIN</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>COSMOS © 2026 • EXPLORE BEYOND THE EDGE OF HUMANITY.</div>
+        <div>DESIGNED WITH NASA & SCIENTIFIC OBSERVATION DATA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/stars.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/planets.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Timeline Era Filter System
+    const eraFilterBtns = document.querySelectorAll('#era-filters [data-era]');
+    const timelineEntries = document.querySelectorAll('#timeline-track .timeline-entry');
+
+    eraFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        eraFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const era = btn.getAttribute('data-era');
+
+        timelineEntries.forEach(entry => {
+          const group = entry.getAttribute('data-era-group');
+          if (era === 'all' || era === group) {
+            entry.style.display = 'flex';
+          } else {
+            entry.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+

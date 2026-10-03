@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tribute to the courageous astronauts, cosmonauts, and pioneers who broke the gravitational bounds of Earth.">
+  <title>Astronauts â€” COSMOS Exploration</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particle-canvas"></canvas>
+  <div class="cosmic-noise-overlay"></div>
+  <div class="shooting-star-container"></div>
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-ring"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="cosmic-container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="COSMOS Homepage">
+        <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+        <span class="logo-sub">Explore the Unknown</span>
+      </a>
+
+      <nav class="main-nav" role="navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="solar-system.html" class="nav-link">Solar System</a></li>
+          <li class="nav-item"><a href="planets.html" class="nav-link">Planets</a></li>
+          <li class="nav-item"><a href="black-holes.html" class="nav-link">Black Holes</a></li>
+          <li class="nav-item"><a href="galaxies.html" class="nav-link">Galaxies</a></li>
+          <li class="nav-item"><a href="space-missions.html" class="nav-link">Missions</a></li>
+          <li class="nav-item"><a href="astronauts.html" class="nav-link active">Astronauts</a></li>
+          <li class="nav-item"><a href="space-timeline.html" class="nav-link">Timeline</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="search.html" class="icon-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a>
+        <button class="sound-toggle" aria-label="Toggle Sound"><span class="sound-dot"></span><span class="sound-text">SOUND OFF</span></button>
+        <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" role="dialog">
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item"><a href="solar-system.html" class="mobile-nav-link">Solar System</a></li>
+      <li class="mobile-nav-item"><a href="planets.html" class="mobile-nav-link">Planets</a></li>
+      <li class="mobile-nav-item"><a href="black-holes.html" class="mobile-nav-link">Black Holes</a></li>
+      <li class="mobile-nav-item"><a href="galaxies.html" class="mobile-nav-link">Galaxies</a></li>
+      <li class="mobile-nav-item"><a href="space-missions.html" class="mobile-nav-link">Missions</a></li>
+      <li class="mobile-nav-item"><a href="astronauts.html" class="mobile-nav-link active">Astronauts</a></li>
+      <li class="mobile-nav-item"><a href="space-timeline.html" class="mobile-nav-link">Timeline</a></li>
+      <li class="mobile-nav-item"><a href="search.html" class="mobile-nav-link">Search Terminal</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="cosmic-container">
+        <span class="section-tag reveal-up">THE HUMAN FLIGHT ARCHIVE</span>
+        <h1 class="section-title reveal-up delay-1">THE HUMANS WHO <span class="gradient-text">LEFT EARTH</span></h1>
+        <p class="section-subtitle reveal-up delay-2">
+          Profiles of the trailblazers who faced the vacuum of space, stepped onto extraterrestrial soil, and advanced human presence in the cosmic arena.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Categories -->
+    <section class="section-spacing" style="padding-top: 0;">
+      <div class="cosmic-container">
+        <div class="filter-tabs reveal-up" id="astro-filters">
+          <button class="filter-btn active" data-astro-filter="all">ALL EXPLORERS</button>
+          <button class="filter-btn" data-astro-filter="pioneers">SPACE PIONEERS</button>
+          <button class="filter-btn" data-astro-filter="apollo">APOLLO CREWS</button>
+          <button class="filter-btn" data-astro-filter="modern">MODERN ASTRONAUTS</button>
+          <button class="filter-btn" data-astro-filter="women">WOMEN IN SPACE</button>
+        </div>
+
+        <div class="astronauts-grid" id="astro-catalog-grid">
+
+          <!-- Neil Armstrong -->
+          <div class="astronaut-card tilt-card reveal-up delay-1 astro-card-item" data-astro-group="apollo">
+            <div class="astronaut-portrait" style="background-image: radial-gradient(circle at 50% 30%, rgba(0, 168, 255, 0.4), transparent 70%), linear-gradient(180deg, #1E293B, #02040A);"></div>
+            <div class="astronaut-details tilt-inner">
+              <span class="astronaut-mission-badge">APOLLO 11 â€¢ GEMINI 8</span>
+              <h3 class="astronaut-name">NEIL ARMSTRONG</h3>
+              <p class="astronaut-achievement">
+                First human to set foot on the Moon on July 20, 1969. Naval aviator, experimental test pilot, and aeronautical engineer.
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan);">TIME IN SPACE: 8d 14h</span>
+                <a href="astronaut-details.html?astronaut=neil-armstrong" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">BIOGRAPHY â†’</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Yuri Gagarin -->
+          <div class="astronaut-card tilt-card reveal-up delay-2 astro-card-item" data-astro-group="pioneers">
+            <div class="astronaut-portrait" style="background-image: radial-gradient(circle at 50% 30%, rgba(220, 38, 38, 0.4), transparent 70%), linear-gradient(180deg, #1E293B, #02040A);"></div>
+            <div class="astronaut-details tilt-inner">
+              <span class="astronaut-mission-badge">VOSTOK 1 (1961)</span>
+              <h3 class="astronaut-name">YURI GAGARIN</h3>
+              <p class="astronaut-achievement">
+                First human journey into outer space, orbiting Earth on April 12, 1961. Awarded Hero of the Soviet Union.
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan);">FLIGHT: 108 MINUTES</span>
+                <a href="astronaut-details.html?astronaut=yuri-gagarin" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">BIOGRAPHY â†’</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kalpana Chawla -->
+          <div class="astronaut-card tilt-card reveal-up delay-3 astro-card-item" data-astro-group="women">
+            <div class="astronaut-portrait" style="background-image: radial-gradient(circle at 50% 30%, rgba(147, 51, 234, 0.4), transparent 70%), linear-gradient(180deg, #1E293B, #02040A);"></div>
+            <div class="astronaut-details tilt-inner">
+              <span class="astronaut-mission-badge">STS-87 â€¢ STS-107</span>
+              <h3 class="astronaut-name">KALPANA CHAWLA</h3>
+              <p class="astronaut-achievement">
+                First Indian-born woman in space. Aerospace engineer who operated the robotic arm and conducted microgravity experiments.
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan);">TIME IN SPACE: 30d 14h</span>
+                <a href="astronaut-details.html?astronaut=kalpana-chawla" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">BIOGRAPHY â†’</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Peggy Whitson -->
+          <div class="astronaut-card tilt-card reveal-up delay-1 astro-card-item" data-astro-group="women">
+            <div class="astronaut-portrait" style="background-image: radial-gradient(circle at 50% 30%, rgba(34, 211, 238, 0.4), transparent 70%), linear-gradient(180deg, #1E293B, #02040A);"></div>
+            <div class="astronaut-details tilt-inner">
+              <span class="astronaut-mission-badge">EXPEDITION 5/16/50/AX-2</span>
+              <h3 class="astronaut-name">PEGGY WHITSON</h3>
+              <p class="astronaut-achievement">
+                America's most experienced astronaut. 675 days in space, first female ISS Commander twice, and 10 spacewalks totaling 60h 21m.
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan);">TIME IN SPACE: 675 DAYS</span>
+                <a href="astronaut-details.html?astronaut=peggy-whitson" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">BIOGRAPHY â†’</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chris Hadfield -->
+          <div class="astronaut-card tilt-card reveal-up delay-2 astro-card-item" data-astro-group="modern">
+            <div class="astronaut-portrait" style="background-image: radial-gradient(circle at 50% 30%, rgba(251, 191, 36, 0.4), transparent 70%), linear-gradient(180deg, #1E293B, #02040A);"></div>
+            <div class="astronaut-details tilt-inner">
+              <span class="astronaut-mission-badge">STS-74 â€¢ STS-100 â€¢ EXP 35</span>
+              <h3 class="astronaut-name">CHRIS HADFIELD</h3>
+              <p class="astronaut-achievement">
+                First Canadian to walk in space and commander of the International Space Station, celebrated for global educational outreach.
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan);">TIME IN SPACE: 166 DAYS</span>
+                <a href="astronaut-details.html?astronaut=chris-hadfield" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">BIOGRAPHY â†’</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buzz Aldrin -->
+          <div class="astronaut-card tilt-card reveal-up delay-3 astro-card-item" data-astro-group="apollo">
+            <div class="astronaut-portrait" style="background-image: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.4), transparent 70%), linear-gradient(180deg, #1E293B, #02040A);"></div>
+            <div class="astronaut-details tilt-inner">
+              <span class="astronaut-mission-badge">APOLLO 11 â€¢ GEMINI 12</span>
+              <h3 class="astronaut-name">BUZZ ALDRIN</h3>
+              <p class="astronaut-achievement">
+                Lunar Module pilot on Apollo 11, the second human to walk on the Moon. Pioneered underwater spacewalk training techniques.
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan);">TIME IN SPACE: 12d 01h</span>
+                <a href="astronaut-details.html?astronaut=buzz-aldrin" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">BIOGRAPHY â†’</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <!-- ==========================================================================
+       ENORMOUS CINEMATIC FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-horizon-glow"></div>
+    <div class="cosmic-container">
+      <div class="footer-top">
+        <div class="footer-callout">
+          <h3>READY TO EXPLORE THE UNKNOWN?</h3>
+          <p>Join millions across Earth discovering worlds beyond our atmosphere.</p>
+        </div>
+        <a href="solar-system.html" class="cosmic-btn cosmic-btn-primary">
+          LAUNCH MISSION <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+            <span class="logo-sub">Explore the Unknown</span>
+          </a>
+          <p class="footer-about-text">
+            An ultra-premium interactive astronomical observatory platform engineered for scientific wonder, documentary realism, and interstellar discovery.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan);">
+            STATION STATUS: ONLINE • ALL ARRAYS OPERATIONAL
+          </div>
+        </div>
+
+        <!-- Col 2: Explore -->
+        <div>
+          <h4 class="footer-col-title">EXPLORE</h4>
+          <ul class="footer-links">
+            <li><a href="solar-system.html">Solar System</a></li>
+            <li><a href="planets.html">All Planets</a></li>
+            <li><a href="galaxies.html">Galaxies Database</a></li>
+            <li><a href="black-holes.html">Black Hole Singularities</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Discover -->
+        <div>
+          <h4 class="footer-col-title">DISCOVER</h4>
+          <ul class="footer-links">
+            <li><a href="space-missions.html">Space Missions</a></li>
+            <li><a href="astronauts.html">Astronaut Pioneers</a></li>
+            <li><a href="space-timeline.html">Cosmic Timeline</a></li>
+            <li><a href="search.html">Search Terminal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Project -->
+        <div>
+          <h4 class="footer-col-title">OBSERVATORY</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Project</a></li>
+            <li><a href="planet-details.html?planet=jupiter">Featured Planet</a></li>
+            <li><a href="galaxy-details.html?galaxy=andromeda">Featured Galaxy</a></li>
+            <li><a href="mission-details.html?mission=jwst">Featured Mission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Telemetry Dispatch -->
+        <div>
+          <h4 class="footer-col-title">TELEMETRY DISPATCH</h4>
+          <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.6;">
+            Subscribe to receive real-time planetary observations, rover alerts, and deep-space telemetry direct to your interface.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Telemetry channel confirmed. You are registered on the COSMOS frequency.');">
+            <input type="email" placeholder="Enter observer email..." class="footer-input" required>
+            <button type="submit" class="cosmic-btn cosmic-btn-primary" style="padding: 0.75rem 1.25rem;">JOIN</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>COSMOS © 2026 • EXPLORE BEYOND THE EDGE OF HUMANITY.</div>
+        <div>DESIGNED WITH NASA & SCIENTIFIC OBSERVATION DATA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/stars.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/planets.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Astronaut Filter System
+    const astroFilterBtns = document.querySelectorAll('#astro-filters [data-astro-filter]');
+    const astroCards = document.querySelectorAll('#astro-catalog-grid .astro-card-item');
+
+    astroFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        astroFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-astro-filter');
+
+        astroCards.forEach(card => {
+          const group = card.getAttribute('data-astro-group');
+          if (filter === 'all' || filter === group) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+

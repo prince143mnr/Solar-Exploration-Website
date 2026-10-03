@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore our solar system â€” The Sun, inner terrestrial worlds, the asteroid belt, outer gas giants, and the enigmatic Kuiper Belt.">
+  <title>Solar System â€” COSMOS Space Exploration</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particle-canvas"></canvas>
+  <div class="cosmic-noise-overlay"></div>
+  <div class="shooting-star-container"></div>
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-ring"></div>
+
+  <!-- Site Header -->
+  <header class="site-header" role="banner">
+    <div class="cosmic-container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="COSMOS Homepage">
+        <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+        <span class="logo-sub">Explore the Unknown</span>
+      </a>
+
+      <nav class="main-nav" role="navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="solar-system.html" class="nav-link active">Solar System</a></li>
+          <li class="nav-item">
+            <a href="planets.html" class="nav-link">Planets</a>
+          </li>
+          <li class="nav-item"><a href="black-holes.html" class="nav-link">Black Holes</a></li>
+          <li class="nav-item"><a href="galaxies.html" class="nav-link">Galaxies</a></li>
+          <li class="nav-item"><a href="space-missions.html" class="nav-link">Missions</a></li>
+          <li class="nav-item"><a href="astronauts.html" class="nav-link">Astronauts</a></li>
+          <li class="nav-item"><a href="space-timeline.html" class="nav-link">Timeline</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="search.html" class="icon-btn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </a>
+        <button class="sound-toggle" aria-label="Toggle Sound"><span class="sound-dot"></span><span class="sound-text">SOUND OFF</span></button>
+        <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" role="dialog">
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item"><a href="solar-system.html" class="mobile-nav-link active">Solar System</a></li>
+      <li class="mobile-nav-item"><a href="planets.html" class="mobile-nav-link">Planets</a></li>
+      <li class="mobile-nav-item"><a href="black-holes.html" class="mobile-nav-link">Black Holes</a></li>
+      <li class="mobile-nav-item"><a href="galaxies.html" class="mobile-nav-link">Galaxies</a></li>
+      <li class="mobile-nav-item"><a href="space-missions.html" class="mobile-nav-link">Missions</a></li>
+      <li class="mobile-nav-item"><a href="astronauts.html" class="mobile-nav-link">Astronauts</a></li>
+      <li class="mobile-nav-item"><a href="space-timeline.html" class="mobile-nav-link">Timeline</a></li>
+      <li class="mobile-nav-item"><a href="search.html" class="mobile-nav-link">Search Terminal</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="cosmic-container">
+        <span class="section-tag reveal-up">HELIOCENTRIC ARCHITECTURE</span>
+        <h1 class="section-title reveal-up delay-1">OUR COSMIC <span class="gradient-text">NEIGHBORHOOD</span></h1>
+        <p class="section-subtitle reveal-up delay-2">
+          Bound by the gravitational grasp of our Sun, our planetary system spans billions of kilometers from blistering innermost rocky realms to the icy twilight of the Kuiper Belt.
+        </p>
+      </div>
+    </section>
+
+    <!-- Interactive Horizontal Track Simulator -->
+    <section class="section-spacing" style="padding-top: 0;">
+      <div class="cosmic-container">
+        <div class="solar-system-wrapper reveal-up">
+          <div class="solar-system-track" id="solar-system-track">
+            <div class="celestial-item" data-planet="sun" role="button" tabindex="0">
+              <div class="celestial-body sun"></div>
+              <span class="celestial-name">The Sun</span>
+              <span class="celestial-type">Center</span>
+            </div>
+            <div class="celestial-item" data-planet="mercury" role="button" tabindex="0">
+              <div class="celestial-body mercury"></div>
+              <span class="celestial-name">Mercury</span>
+              <span class="celestial-type">0.39 AU</span>
+            </div>
+            <div class="celestial-item" data-planet="venus" role="button" tabindex="0">
+              <div class="celestial-body venus"></div>
+              <span class="celestial-name">Venus</span>
+              <span class="celestial-type">0.72 AU</span>
+            </div>
+            <div class="celestial-item active" data-planet="earth" role="button" tabindex="0">
+              <div class="celestial-body earth"></div>
+              <span class="celestial-name">Earth</span>
+              <span class="celestial-type">1.00 AU</span>
+            </div>
+            <div class="celestial-item" data-planet="mars" role="button" tabindex="0">
+              <div class="celestial-body mars"></div>
+              <span class="celestial-name">Mars</span>
+              <span class="celestial-type">1.52 AU</span>
+            </div>
+            <div class="celestial-item" data-planet="jupiter" role="button" tabindex="0">
+              <div class="celestial-body jupiter"></div>
+              <span class="celestial-name">Jupiter</span>
+              <span class="celestial-type">5.20 AU</span>
+            </div>
+            <div class="celestial-item" data-planet="saturn" role="button" tabindex="0">
+              <div class="celestial-body saturn"><div class="saturn-ring"></div></div>
+              <span class="celestial-name">Saturn</span>
+              <span class="celestial-type">9.58 AU</span>
+            </div>
+            <div class="celestial-item" data-planet="uranus" role="button" tabindex="0">
+              <div class="celestial-body uranus"></div>
+              <span class="celestial-name">Uranus</span>
+              <span class="celestial-type">19.2 AU</span>
+            </div>
+            <div class="celestial-item" data-planet="neptune" role="button" tabindex="0">
+              <div class="celestial-body neptune"></div>
+              <span class="celestial-name">Neptune</span>
+              <span class="celestial-type">30.1 AU</span>
+            </div>
+            <div class="celestial-item" data-planet="pluto" role="button" tabindex="0">
+              <div class="celestial-body" style="width: 28px; height: 28px; background: radial-gradient(circle at 35% 35%, #E2E8F0, #64748B, #334155); box-shadow: 0 0 10px rgba(226, 232, 240, 0.4);"></div>
+              <span class="celestial-name">Pluto</span>
+              <span class="celestial-type">39.5 AU</span>
+            </div>
+          </div>
+
+          <!-- Telemetry Drawer -->
+          <div class="planet-telemetry-drawer" id="planet-telemetry-drawer">
+            <div class="drawer-preview-orb"></div>
+            <div class="drawer-info">
+              <h3 class="drawer-title">THE SUN</h3>
+              <div class="drawer-subtitle">YELLOW DWARF STAR (G2V)</div>
+              <div class="drawer-metrics">
+                <div class="drawer-metric-item"><span class="drawer-metric-val drawer-dist">0 km</span><span class="drawer-metric-lbl">Distance</span></div>
+                <div class="drawer-metric-item"><span class="drawer-metric-val drawer-diam">1,392,700 km</span><span class="drawer-metric-lbl">Diameter</span></div>
+                <div class="drawer-metric-item"><span class="drawer-metric-val drawer-moons">8 Planets</span><span class="drawer-metric-lbl">Satellites</span></div>
+                <div class="drawer-metric-item"><span class="drawer-metric-val drawer-period">230M Years</span><span class="drawer-metric-lbl">Galactic Orbit</span></div>
+              </div>
+            </div>
+            <div>
+              <a href="planet-details.html?planet=sun" class="cosmic-btn cosmic-btn-primary drawer-explore-btn">
+                EXPLORE SUN <span class="arrow">â†’</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: THE SUN -->
+    <section class="section-spacing" style="background: radial-gradient(circle at 50% 30%, rgba(234, 88, 12, 0.15), transparent 70%);">
+      <div class="cosmic-container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+          <div class="reveal-left">
+            <span class="section-tag" style="color: var(--accent-gold); border-color: rgba(251, 191, 36, 0.3);">SOLAR ANATOMY</span>
+            <h2 class="section-title">THE SUN: <span class="gradient-text">THE HEART OF LIGHT</span></h2>
+            <p style="font-size: 1.1rem; color: var(--soft-space-gray); line-height: 1.8; margin-bottom: 2rem;">
+              The Sun is a nearly perfect sphere of incandescent plasma, heated to incandescence by nuclear fusion reactions in its core. Fusing 600 million tons of hydrogen into helium every second, its radiated energy drives Earth's climate and sustains life across the system.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+              <div class="glass-card" style="padding: 1.25rem;">
+                <div style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--accent-gold);">15,000,000Â°C</div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--soft-space-gray);">CORE TEMPERATURE</div>
+              </div>
+              <div class="glass-card" style="padding: 1.25rem;">
+                <div style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--accent-gold);">99.86%</div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--soft-space-gray);">TOTAL SYSTEM MASS</div>
+              </div>
+            </div>
+            <a href="planet-details.html?planet=sun" class="cosmic-btn cosmic-btn-primary">SOLAR TELEMETRY â†’</a>
+          </div>
+
+          <div class="reveal-right" style="display: flex; justify-content: center;">
+            <div style="width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, #FFF7ED 10%, #FBBF24 50%, #EA580C 85%, #9A3412 100%); box-shadow: 0 0 100px #F59E0B, 0 0 180px rgba(234, 88, 12, 0.7); animation: sunPulse 5s infinite alternate;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: INNER TERRESTRIAL WORLDS -->
+    <section class="section-spacing">
+      <div class="cosmic-container">
+        <div style="text-align: center; margin-bottom: 3.5rem;" class="reveal-up">
+          <span class="section-tag">ZONE 1</span>
+          <h2 class="section-title">THE INNER <span class="gradient-text">TERRESTRIAL WORLDS</span></h2>
+          <p class="section-subtitle">Dense, rocky planets with solid silicates, metallic cores, and dynamic geological histories.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+          <!-- Mercury -->
+          <a href="planet-details.html?planet=mercury" class="glass-card tilt-card reveal-up delay-1" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #CBD5E1, #64748B, #1E293B); box-shadow: 0 0 25px rgba(148, 163, 184, 0.4); margin-bottom: 1.25rem;"></div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--starlight-white); margin-bottom: 0.25rem;">MERCURY</h3>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">57.9M KM</span>
+            <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">Heavily cratered, massive metallic core with temperature swings of 600Â°C.</p>
+          </a>
+
+          <!-- Venus -->
+          <a href="planet-details.html?planet=venus" class="glass-card tilt-card reveal-up delay-2" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FDE68A, #D97706, #78350F); box-shadow: 0 0 25px rgba(217, 119, 6, 0.5); margin-bottom: 1.25rem;"></div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--starlight-white); margin-bottom: 0.25rem;">VENUS</h3>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">108.2M KM</span>
+            <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">Crushing greenhouse pressure and sulfur cloud inferno with backwards spin.</p>
+          </a>
+
+          <!-- Earth -->
+          <a href="planet-details.html?planet=earth" class="glass-card tilt-card reveal-up delay-3" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #38BDF8, #0284C7, #0F172A); box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); margin-bottom: 1.25rem;"></div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--starlight-white); margin-bottom: 0.25rem;">EARTH</h3>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">149.6M KM</span>
+            <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">Liquid hydrosphere, nitrogen-oxygen air, and protective magnetosphere.</p>
+          </a>
+
+          <!-- Mars -->
+          <a href="planet-details.html?planet=mars" class="glass-card tilt-card reveal-up delay-4" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #F87171, #DC2626, #450A0A); box-shadow: 0 0 25px rgba(220, 38, 38, 0.5); margin-bottom: 1.25rem;"></div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--starlight-white); margin-bottom: 0.25rem;">MARS</h3>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">227.9M KM</span>
+            <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">Iron oxide deserts, dry river valleys, and dormant giant shield volcanoes.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: THE ASTEROID BELT -->
+    <section class="section-spacing" style="background: rgba(6, 21, 45, 0.3);">
+      <div class="cosmic-container">
+        <div class="glass-card reveal-up" style="padding: 3.5rem; text-align: center;">
+          <span class="section-tag">INTERPLANETARY DIVIDE</span>
+          <h2 class="section-title">THE ASTEROID <span class="gradient-text">BELT</span></h2>
+          <p class="section-subtitle" style="margin-bottom: 2rem;">
+            A circumstellar disc situated roughly between the orbits of Mars and Jupiter. Occupied by millions of irregularly shaped bodies, dwarf planet Ceres, and pristine remnants from 4.6 billion years ago.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--cosmic-cyan);">2.2 to 3.2 AU</div>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--soft-space-gray);">ORBITAL DISTANCE</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--cosmic-cyan);">CERES</div>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--soft-space-gray);">LARGEST BODY (940 KM)</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--cosmic-cyan);">1.1 - 1.9M</div>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--soft-space-gray);">ASTEROIDS &gt; 1 KM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: OUTER GAS & ICE GIANTS -->
+    <section class="section-spacing">
+      <div class="cosmic-container">
+        <div style="text-align: center; margin-bottom: 3.5rem;" class="reveal-up">
+          <span class="section-tag">ZONE 2</span>
+          <h2 class="section-title">THE OUTER <span class="gradient-text">GIANTS</span></h2>
+          <p class="section-subtitle">Vast hydrogen-helium atmospheres, volatile ice mantles, and intricate moon systems.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+          <!-- Jupiter -->
+          <a href="planet-details.html?planet=jupiter" class="glass-card tilt-card reveal-up delay-1" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="width: 90px; height: 90px; border-radius: 50%; background: repeating-linear-gradient(0deg, #FDE68A, #D97706 15px, #92400E 30px, #FEF3C7 45px); box-shadow: 0 0 35px rgba(217, 119, 6, 0.5); margin-bottom: 1.25rem;"></div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--starlight-white); margin-bottom: 0.25rem;">JUPITER</h3>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">778.5M KM</span>
+            <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">95 moons, Great Red Spot storm, and colossal magnetic field.</p>
+          </a>
+
+          <!-- Saturn -->
+          <a href="planet-details.html?planet=saturn" class="glass-card tilt-card reveal-up delay-2" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="width: 85px; height: 85px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FDE047, #CA8A04, #713F12); box-shadow: 0 0 30px rgba(202, 138, 4, 0.4); margin-bottom: 1.25rem; position: relative;">
+              <div class="saturn-ring" style="width: 140px; height: 35px; top: 25px; left: -27px;"></div>
+            </div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--starlight-white); margin-bottom: 0.25rem;">SATURN</h3>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">1.434B KM</span>
+            <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">Iconic planetary rings and ocean worlds Enceladus and Titan.</p>
+          </a>
+
+          <!-- Uranus -->
+          <a href="planet-details.html?planet=uranus" class="glass-card tilt-card reveal-up delay-3" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #A7F3D0, #0D9488, #115E59); box-shadow: 0 0 30px rgba(13, 148, 136, 0.5); margin-bottom: 1.25rem;"></div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--starlight-white); margin-bottom: 0.25rem;">URANUS</h3>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">2.871B KM</span>
+            <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">Extreme 98-degree axial tilt rolling through freezing aquamarine skies.</p>
+          </a>
+
+          <!-- Neptune -->
+          <a href="planet-details.html?planet=neptune" class="glass-card tilt-card reveal-up delay-4" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #60A5FA, #2563EB, #1E3A8A); box-shadow: 0 0 30px rgba(37, 99, 235, 0.6); margin-bottom: 1.25rem;"></div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--starlight-white); margin-bottom: 0.25rem;">NEPTUNE</h3>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">4.495B KM</span>
+            <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">Supersonic storms exceeding 2,100 km/h and nitrogen-erupting Triton.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: KUIPER BELT & BEYOND -->
+    <section class="section-spacing" style="padding-bottom: 140px;">
+      <div class="cosmic-container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+          <div class="reveal-left">
+            <span class="section-tag">ZONE 3</span>
+            <h2 class="section-title">THE KUIPER <span class="gradient-text">BELT &amp; OORT CLOUD</span></h2>
+            <p style="font-size: 1.1rem; color: var(--soft-space-gray); line-height: 1.8; margin-bottom: 2rem;">
+              Extending from Neptune's orbit out to 50 AU, the Kuiper Belt is home to Pluto, Charon, and thousands of icy planetesimals. Farther still lies the spherical Oort Cloudâ€”the primordial nursery of long-period comets stretching nearly a light-year into deep interstellar space.
+            </p>
+            <a href="planet-details.html?planet=pluto" class="cosmic-btn cosmic-btn-primary">EXPLORE PLUTO TELEMETRY â†’</a>
+          </div>
+
+          <div class="reveal-right">
+            <div class="glass-card" style="padding: 2.5rem;">
+              <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--starlight-white); margin-bottom: 1rem;">INTERSTELLAR HORIZON METRICS</h3>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--soft-space-gray);">
+                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.5rem;">
+                  <span>Kuiper Belt Distance:</span>
+                  <strong style="color: var(--cosmic-cyan);">30 to 55 AU</strong>
+                </li>
+                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.5rem;">
+                  <span>Known Dwarf Planets:</span>
+                  <strong style="color: var(--cosmic-cyan);">Pluto, Eris, Haumea, Makemake</strong>
+                </li>
+                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.5rem;">
+                  <span>Heliosphere Boundary:</span>
+                  <strong style="color: var(--cosmic-cyan);">120 AU (~18 Billion km)</strong>
+                </li>
+                <li style="display: flex; justify-content: space-between;">
+                  <span>Oort Cloud Radius:</span>
+                  <strong style="color: var(--cosmic-cyan);">2,000 to 100,000 AU</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         REAL-TIME GRAND CELESTIAL ORRERY SIMULATION
+         ========================================================================== -->
+    <section class="section-spacing grand-orrery-section" data-section="orrery">
+      <div class="cosmic-container">
+        <div style="text-align: center;" class="reveal-up">
+          <span class="section-tag">REAL-TIME GRAVITATIONAL CHOREOGRAPHY</span>
+          <h2 class="section-title">THE GRAND <span class="gradient-text">CELESTIAL ORRERY</span></h2>
+          <p class="section-subtitle">
+            Watch the eight planets, moons, and the asteroid belt revolve around the glowing Sun in real-time Keplerian orbital physics. Switch perspectives, adjust time warp, or lock onto any world for live telemetry.
+          </p>
+        </div>
+
+        <div class="orrery-stage-wrapper reveal-up delay-1">
+          <!-- Control Console Bar -->
+          <div class="orrery-controls-bar">
+            <!-- Left: View Perspective -->
+            <div class="orrery-btn-group">
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); margin-right: 0.25rem;">VIEW:</span>
+              <button class="orrery-btn active" data-orrery-view="3d">3D PERSPECTIVE</button>
+              <button class="orrery-btn" data-orrery-view="top">TOP-DOWN</button>
+            </div>
+
+            <!-- Center: Time Warp -->
+            <div class="orrery-btn-group">
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); margin-right: 0.25rem;">TIME WARP:</span>
+              <button class="orrery-btn" data-orrery-warp="0">PAUSE ||</button>
+              <button class="orrery-btn active" data-orrery-warp="1">1x NORMAL</button>
+              <button class="orrery-btn" data-orrery-warp="4">4x ORBIT</button>
+              <button class="orrery-btn" data-orrery-warp="12">12x WARP</button>
+            </div>
+
+            <!-- Right: Display Layers -->
+            <div class="orrery-btn-group">
+              <button class="orrery-btn active" id="toggle-orrery-orbits">ORBITS</button>
+              <button class="orrery-btn active" id="toggle-orrery-trails">TRAILS</button>
+              <button class="orrery-btn active" id="toggle-orrery-labels">LABELS</button>
+            </div>
+          </div>
+
+          <!-- Main Interactive Canvas Stage -->
+          <div class="orrery-canvas-container">
+            <canvas id="orrery-canvas"></canvas>
+
+            <!-- Floating Holographic HUD Telemetry Card -->
+            <div class="orrery-hud-panel active" id="orrery-hud-panel">
+              <h3 class="orrery-hud-title">EARTH</h3>
+              <div class="orrery-hud-tag">LIVING BLUE OASIS</div>
+              <div class="orrery-hud-specs">
+                <div class="orrery-hud-specs-row">
+                  <span>DISTANCE:</span>
+                  <strong class="hud-dist">1.00 AU (149.6M km)</strong>
+                </div>
+                <div class="orrery-hud-specs-row">
+                  <span>ORBITAL SPEED:</span>
+                  <strong class="hud-vel">29.8 km/s</strong>
+                </div>
+                <div class="orrery-hud-specs-row">
+                  <span>TEMPERATURE:</span>
+                  <strong class="hud-temp">15°C Mean</strong>
+                </div>
+                <div class="orrery-hud-specs-row">
+                  <span>MOONS:</span>
+                  <strong class="hud-moons">1 (The Moon)</strong>
+                </div>
+              </div>
+              <a href="planet-details.html?planet=earth" class="orrery-hud-btn">
+                ANALYZE EARTH <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Bottom Planet Quick Selector -->
+          <div class="orrery-planet-selector">
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); align-self: center; margin-right: 0.5rem; white-space: nowrap;">QUICK FOCUS:</span>
+            <button class="orrery-planet-chip" data-orrery-select="mercury"><span class="orrery-planet-chip-dot" style="background: #CBD5E1;"></span>MERCURY</button>
+            <button class="orrery-planet-chip" data-orrery-select="venus"><span class="orrery-planet-chip-dot" style="background: #FDE68A;"></span>VENUS</button>
+            <button class="orrery-planet-chip active" data-orrery-select="earth"><span class="orrery-planet-chip-dot" style="background: #38BDF8;"></span>EARTH</button>
+            <button class="orrery-planet-chip" data-orrery-select="mars"><span class="orrery-planet-chip-dot" style="background: #F87171;"></span>MARS</button>
+            <button class="orrery-planet-chip" data-orrery-select="jupiter"><span class="orrery-planet-chip-dot" style="background: #FBBF24;"></span>JUPITER</button>
+            <button class="orrery-planet-chip" data-orrery-select="saturn"><span class="orrery-planet-chip-dot" style="background: #FDE047;"></span>SATURN</button>
+            <button class="orrery-planet-chip" data-orrery-select="uranus"><span class="orrery-planet-chip-dot" style="background: #A7F3D0;"></span>URANUS</button>
+            <button class="orrery-planet-chip" data-orrery-select="neptune"><span class="orrery-planet-chip-dot" style="background: #60A5FA;"></span>NEPTUNE</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+    <!-- ==========================================================================
+       ENORMOUS CINEMATIC FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-horizon-glow"></div>
+    <div class="cosmic-container">
+      <div class="footer-top">
+        <div class="footer-callout">
+          <h3>READY TO EXPLORE THE UNKNOWN?</h3>
+          <p>Join millions across Earth discovering worlds beyond our atmosphere.</p>
+        </div>
+        <a href="solar-system.html" class="cosmic-btn cosmic-btn-primary">
+          LAUNCH MISSION <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+            <span class="logo-sub">Explore the Unknown</span>
+          </a>
+          <p class="footer-about-text">
+            An ultra-premium interactive astronomical observatory platform engineered for scientific wonder, documentary realism, and interstellar discovery.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan);">
+            STATION STATUS: ONLINE • ALL ARRAYS OPERATIONAL
+          </div>
+        </div>
+
+        <!-- Col 2: Explore -->
+        <div>
+          <h4 class="footer-col-title">EXPLORE</h4>
+          <ul class="footer-links">
+            <li><a href="solar-system.html">Solar System</a></li>
+            <li><a href="planets.html">All Planets</a></li>
+            <li><a href="galaxies.html">Galaxies Database</a></li>
+            <li><a href="black-holes.html">Black Hole Singularities</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Discover -->
+        <div>
+          <h4 class="footer-col-title">DISCOVER</h4>
+          <ul class="footer-links">
+            <li><a href="space-missions.html">Space Missions</a></li>
+            <li><a href="astronauts.html">Astronaut Pioneers</a></li>
+            <li><a href="space-timeline.html">Cosmic Timeline</a></li>
+            <li><a href="search.html">Search Terminal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Project -->
+        <div>
+          <h4 class="footer-col-title">OBSERVATORY</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Project</a></li>
+            <li><a href="planet-details.html?planet=jupiter">Featured Planet</a></li>
+            <li><a href="galaxy-details.html?galaxy=andromeda">Featured Galaxy</a></li>
+            <li><a href="mission-details.html?mission=jwst">Featured Mission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Telemetry Dispatch -->
+        <div>
+          <h4 class="footer-col-title">TELEMETRY DISPATCH</h4>
+          <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.6;">
+            Subscribe to receive real-time planetary observations, rover alerts, and deep-space telemetry direct to your interface.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Telemetry channel confirmed. You are registered on the COSMOS frequency.');">
+            <input type="email" placeholder="Enter observer email..." class="footer-input" required>
+            <button type="submit" class="cosmic-btn cosmic-btn-primary" style="padding: 0.75rem 1.25rem;">JOIN</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>COSMOS © 2026 • EXPLORE BEYOND THE EDGE OF HUMANITY.</div>
+        <div>DESIGNED WITH NASA & SCIENTIFIC OBSERVATION DATA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/stars.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/planets.js"></script>
+  <script src="js/orrery.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

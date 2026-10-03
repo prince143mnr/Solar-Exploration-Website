@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detailed biography, mission logs, achievements, and historic moments of space pioneer astronauts.">
+  <title>Astronaut Dossier â€” COSMOS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particle-canvas"></canvas>
+  <div class="cosmic-noise-overlay"></div>
+  <div class="shooting-star-container"></div>
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-ring"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="cosmic-container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="COSMOS Homepage">
+        <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+        <span class="logo-sub">Explore the Unknown</span>
+      </a>
+
+      <nav class="main-nav" role="navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="solar-system.html" class="nav-link">Solar System</a></li>
+          <li class="nav-item"><a href="planets.html" class="nav-link">Planets</a></li>
+          <li class="nav-item"><a href="black-holes.html" class="nav-link">Black Holes</a></li>
+          <li class="nav-item"><a href="galaxies.html" class="nav-link">Galaxies</a></li>
+          <li class="nav-item"><a href="space-missions.html" class="nav-link">Missions</a></li>
+          <li class="nav-item"><a href="astronauts.html" class="nav-link active">Astronauts</a></li>
+          <li class="nav-item"><a href="space-timeline.html" class="nav-link">Timeline</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="search.html" class="icon-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a>
+        <button class="sound-toggle" aria-label="Toggle Sound"><span class="sound-dot"></span><span class="sound-text">SOUND OFF</span></button>
+        <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" role="dialog">
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item"><a href="solar-system.html" class="mobile-nav-link">Solar System</a></li>
+      <li class="mobile-nav-item"><a href="planets.html" class="mobile-nav-link">Planets</a></li>
+      <li class="mobile-nav-item"><a href="black-holes.html" class="mobile-nav-link">Black Holes</a></li>
+      <li class="mobile-nav-item"><a href="galaxies.html" class="mobile-nav-link">Galaxies</a></li>
+      <li class="mobile-nav-item"><a href="space-missions.html" class="mobile-nav-link">Missions</a></li>
+      <li class="mobile-nav-item"><a href="astronauts.html" class="mobile-nav-link active">Astronauts</a></li>
+      <li class="mobile-nav-item"><a href="space-timeline.html" class="mobile-nav-link">Timeline</a></li>
+      <li class="mobile-nav-item"><a href="search.html" class="mobile-nav-link">Search Terminal</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <!-- Quick Switcher Bar -->
+    <div style="background: rgba(6, 21, 45, 0.7); border-bottom: 1px solid rgba(0, 168, 255, 0.15); padding: 0.75rem 0; margin-top: var(--header-height); position: relative; z-index: 100;">
+      <div class="cosmic-container" style="display: flex; gap: 0.75rem; overflow-x: auto;">
+        <a href="astronaut-details.html?astronaut=neil-armstrong" id="a-link-neil-armstrong" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">NEIL ARMSTRONG</a>
+        <a href="astronaut-details.html?astronaut=yuri-gagarin" id="a-link-yuri-gagarin" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">YURI GAGARIN</a>
+        <a href="astronaut-details.html?astronaut=kalpana-chawla" id="a-link-kalpana-chawla" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">KALPANA CHAWLA</a>
+        <a href="astronaut-details.html?astronaut=peggy-whitson" id="a-link-peggy-whitson" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">PEGGY WHITSON</a>
+        <a href="astronaut-details.html?astronaut=chris-hadfield" id="a-link-chris-hadfield" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">CHRIS HADFIELD</a>
+        <a href="astronaut-details.html?astronaut=buzz-aldrin" id="a-link-buzz-aldrin" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">BUZZ ALDRIN</a>
+      </div>
+    </div>
+
+    <!-- Astronaut Hero -->
+    <section class="page-hero" style="padding-top: 60px; padding-bottom: 40px;">
+      <div class="cosmic-container">
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; text-align: left;">
+          <div>
+            <span class="section-tag" id="a-tag">APOLLO 11 MISSION COMMANDER</span>
+            <h1 class="section-title" id="a-name" style="font-size: clamp(2.4rem, 5vw, 4.2rem); margin-bottom: 1rem;">NEIL ARMSTRONG</h1>
+            <blockquote style="font-size: 1.25rem; font-style: italic; color: var(--cosmic-cyan); border-left: 3px solid var(--cosmic-cyan); padding-left: 1.25rem; margin-bottom: 1.75rem; line-height: 1.6;" id="a-quote">
+              "That's one small step for man, one giant leap for mankind."
+            </blockquote>
+            <p style="font-size: 1.05rem; color: var(--soft-space-gray); line-height: 1.8; margin-bottom: 2rem;" id="a-bio">
+              American astronaut and aeronautical engineer who became the first person to walk on the Moon on July 20, 1969. Commander of Apollo 11 and command pilot of Gemini 8.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="#biography" class="cosmic-btn cosmic-btn-primary">CAREER DOSSIER â†“</a>
+              <a href="astronauts.html" class="cosmic-btn cosmic-btn-secondary">ALL ASTRONAUTS</a>
+            </div>
+          </div>
+
+          <!-- Stylized Helmet Graphic -->
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <div style="width: 320px; height: 360px; border-radius: 120px 120px 80px 80px; background: linear-gradient(180deg, #1E293B 0%, #0F172A 70%, #02040A 100%); border: 3px solid rgba(0, 168, 255, 0.4); box-shadow: 0 0 60px rgba(0, 168, 255, 0.3), inset 0 0 40px rgba(0, 168, 255, 0.2); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+              <!-- Visor Reflection -->
+              <div style="width: 240px; height: 180px; border-radius: 60px; background: linear-gradient(135deg, rgba(251, 191, 36, 0.6) 0%, rgba(234, 88, 12, 0.4) 40%, rgba(6, 21, 45, 0.9) 100%); border: 2px solid rgba(251, 191, 36, 0.6); box-shadow: 0 0 35px rgba(251, 191, 36, 0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; text-align: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #FFFFFF; letter-spacing: 0.15em;">HUD VISOR TELEMETRY</span>
+                <span style="font-family: var(--font-heading); font-size: 1.1rem; color: #FFFFFF; margin-top: 0.5rem;" id="a-hud-status">O2: 100% â€¢ SUIT NOMINAL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specs Grid -->
+    <section class="section-spacing" id="biography" style="padding-top: 40px;">
+      <div class="cosmic-container">
+        <div class="telemetry-specs-grid">
+          <div class="spec-card">
+            <div class="spec-card-val" id="a-spec-time">8d 14h 12m</div>
+            <div class="spec-card-lbl">TIME IN SPACE</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-val" id="a-spec-missions">Apollo 11, Gemini 8</div>
+            <div class="spec-card-lbl">SPACE MISSIONS</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-val" id="a-spec-eva">2h 31m</div>
+            <div class="spec-card-lbl">LUNAR SURFACE EVA</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-val" id="a-spec-status">Command Pioneer</div>
+            <div class="spec-card-lbl">ROLE / STATUS</div>
+          </div>
+        </div>
+
+        <!-- Career Milestones -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+          <div class="glass-card" style="padding: 2.5rem;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">HISTORIC ACHIEVEMENTS</h3>
+            <p style="font-size: 0.95rem; color: var(--soft-space-gray); line-height: 1.8;" id="a-achievements">
+              â€¢ Successfully performed the first docking of two spacecraft in orbit during Gemini 8 (1966).<br>
+              â€¢ Manually piloted the Lunar Module Eagle past a boulder-strewn crater with under 30 seconds of fuel remaining.<br>
+              â€¢ Deployed the Early Apollo Scientific Experiment Package (EASEP) and returned 21.5 kg of pristine lunar samples.<br>
+              â€¢ Recipient of the Presidential Medal of Freedom, the Congressional Space Medal of Honor, and the Gold Space Medal.
+            </p>
+          </div>
+
+          <div class="glass-card" style="padding: 2.5rem;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">LEGACY &amp; IMPACT</h3>
+            <p style="font-size: 0.95rem; color: var(--soft-space-gray); line-height: 1.8;" id="a-legacy">
+              Armstrong's quiet humbleness and unflappable composure in life-threatening orbital emergencies defined the spirit of exploratory excellence. After Apollo 11, he served as a professor of aerospace engineering at the University of Cincinnati and contributed to investigations of Apollo 13 and the Challenger disaster.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <!-- ==========================================================================
+       ENORMOUS CINEMATIC FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-horizon-glow"></div>
+    <div class="cosmic-container">
+      <div class="footer-top">
+        <div class="footer-callout">
+          <h3>READY TO EXPLORE THE UNKNOWN?</h3>
+          <p>Join millions across Earth discovering worlds beyond our atmosphere.</p>
+        </div>
+        <a href="solar-system.html" class="cosmic-btn cosmic-btn-primary">
+          LAUNCH MISSION <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+            <span class="logo-sub">Explore the Unknown</span>
+          </a>
+          <p class="footer-about-text">
+            An ultra-premium interactive astronomical observatory platform engineered for scientific wonder, documentary realism, and interstellar discovery.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan);">
+            STATION STATUS: ONLINE • ALL ARRAYS OPERATIONAL
+          </div>
+        </div>
+
+        <!-- Col 2: Explore -->
+        <div>
+          <h4 class="footer-col-title">EXPLORE</h4>
+          <ul class="footer-links">
+            <li><a href="solar-system.html">Solar System</a></li>
+            <li><a href="planets.html">All Planets</a></li>
+            <li><a href="galaxies.html">Galaxies Database</a></li>
+            <li><a href="black-holes.html">Black Hole Singularities</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Discover -->
+        <div>
+          <h4 class="footer-col-title">DISCOVER</h4>
+          <ul class="footer-links">
+            <li><a href="space-missions.html">Space Missions</a></li>
+            <li><a href="astronauts.html">Astronaut Pioneers</a></li>
+            <li><a href="space-timeline.html">Cosmic Timeline</a></li>
+            <li><a href="search.html">Search Terminal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Project -->
+        <div>
+          <h4 class="footer-col-title">OBSERVATORY</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Project</a></li>
+            <li><a href="planet-details.html?planet=jupiter">Featured Planet</a></li>
+            <li><a href="galaxy-details.html?galaxy=andromeda">Featured Galaxy</a></li>
+            <li><a href="mission-details.html?mission=jwst">Featured Mission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Telemetry Dispatch -->
+        <div>
+          <h4 class="footer-col-title">TELEMETRY DISPATCH</h4>
+          <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.6;">
+            Subscribe to receive real-time planetary observations, rover alerts, and deep-space telemetry direct to your interface.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Telemetry channel confirmed. You are registered on the COSMOS frequency.');">
+            <input type="email" placeholder="Enter observer email..." class="footer-input" required>
+            <button type="submit" class="cosmic-btn cosmic-btn-primary" style="padding: 0.75rem 1.25rem;">JOIN</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>COSMOS © 2026 • EXPLORE BEYOND THE EDGE OF HUMANITY.</div>
+        <div>DESIGNED WITH NASA & SCIENTIFIC OBSERVATION DATA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/stars.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/planets.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const ASTRO_DATA = {
+      'neil-armstrong': {
+        name: 'NEIL ARMSTRONG',
+        tag: 'APOLLO 11 COMMANDER',
+        quote: '"That\'s one small step for man, one giant leap for mankind."',
+        bio: 'American astronaut and aeronautical engineer who became the first human to walk on the Moon on July 20, 1969. Flew over 200 different models of aircraft, including the rocket-powered X-15 reaching Mach 5.74.',
+        time: '8d 14h 12m',
+        missions: 'Apollo 11, Gemini 8',
+        eva: '2h 31m',
+        status: 'Command Pioneer (1930-2012)',
+        hud: 'O2: 100% â€¢ TRANQUILITY BASE',
+        achievements: 'â€¢ First human to set foot on another celestial body.<br>â€¢ First orbital docking in spaceflight history (Gemini 8 with Agena Target Vehicle).<br>â€¢ Awarded Presidential Medal of Freedom and Congressional Space Medal of Honor.<br>â€¢ Safely landed Eagle with under 30 seconds of descent propellant remaining.',
+        legacy: 'Armstrong became a global symbol of human audacity and peaceful exploration. He maintained that the lunar landing was the shared effort of 400,000 scientists, engineers, and technicians across the nation.'
+      },
+      'yuri-gagarin': {
+        name: 'YURI GAGARIN',
+        tag: 'FIRST HUMAN IN SPACE',
+        quote: '"Orbiting Earth in the spaceship, I saw how beautiful our planet is. People, let us preserve and increase this beauty, not destroy it!"',
+        bio: 'Soviet pilot and cosmonaut who became the first human to journey into outer space on April 12, 1961. His Vostok 1 capsule completed one full orbit of Earth in 108 minutes.',
+        time: '1h 48m (108 mins)',
+        missions: 'Vostok 1',
+        eva: 'None (Capsule Orbit)',
+        status: 'Hero of the Soviet Union',
+        hud: 'VOSTOK 1 â€¢ ORBIT SECURED',
+        achievements: 'â€¢ First human spaceflight in history.<br>â€¢ Reached orbital apogee of 327 km traveling at 27,400 km/h.<br>â€¢ Successfully sustained weightlessness and high G-forces during ballistic re-entry.<br>â€¢ Ejected safely at 7,000 meters altitude to parachute onto farmland near Smelovka.',
+        legacy: 'Gagarin\'s famous cry "Poyekhali!" ("Let\'s go!") became a rallying cry for space exploration across humanity. April 12 is celebrated worldwide as the International Day of Human Space Flight.'
+      },
+      'kalpana-chawla': {
+        name: 'KALPANA CHAWLA',
+        tag: 'MISSION SPECIALIST & ROBOTICIST',
+        quote: '"The path from dreams to success does exist. May you have the vision to find it, the courage to get on to it, and the perseverance to follow it."',
+        bio: 'Indian-born American astronaut and aerospace engineer. First woman of Indian heritage in space, flying aboard STS-87 in 1997 and STS-107 in 2003.',
+        time: '30d 14h 54m',
+        missions: 'STS-87, STS-107',
+        eva: 'Remote Robotic Arm Ops',
+        status: 'Congressional Space Medal of Honor',
+        hud: 'COLUMBIA â€¢ RESEARCH NOMINAL',
+        achievements: 'â€¢ Operated the Remote Manipulator System (RMS) to deploy and capture the Spartan satellite on STS-87.<br>â€¢ Conducted 80 microgravity scientific investigations on STS-107.<br>â€¢ Earned a doctorate in aerospace engineering specializing in computational fluid dynamics.<br>â€¢ Posthumously awarded the NASA Space Flight Medal.',
+        legacy: 'Kalpana Chawla inspired millions of young women across India and the globe to pursue careers in science, aeronautics, and space exploration. A lunar crater, an asteroid, and multiple university engineering faculties bear her name.'
+      },
+      'peggy-whitson': {
+        name: 'PEGGY WHITSON',
+        tag: 'VETERAN ISS COMMANDER',
+        quote: '"I think the most important thing is to realize that you can do more than you think you can. Push yourself beyond what you thought was possible."',
+        bio: 'American biochemistry researcher and commercial astronaut. Holds the US record for cumulative time in space (675 days) and the world record for the oldest woman in space.',
+        time: '675 Days 03h 48m',
+        missions: 'Exp 5, Exp 16, Exp 50/51, Axiom-2',
+        eva: '60h 21m (10 Spacewalks)',
+        status: 'First 2-Time Female ISS Commander',
+        hud: 'ISS EXPEDITION â€¢ SUIT NOMINAL',
+        achievements: 'â€¢ Most cumulative time in space of any American or woman (675 days).<br>â€¢ Most spacewalks (10) and most spacewalking time by a female astronaut.<br>â€¢ First non-military Chief of the NASA Astronaut Office.<br>â€¢ Commanded the commercial Axiom Mission 2 to the ISS in 2023.',
+        legacy: 'Whitson shattered records across biomedical research, station maintenance, and leadership. Her physical endurance and scientific leadership transformed long-duration space station operations.'
+      },
+      'chris-hadfield': {
+        name: 'CHRIS HADFIELD',
+        tag: 'ISS COMMANDER & EDUCATOR',
+        quote: '"Decide in your heart of hearts what really excites and challenges you, and start moving toward it. Every step, even the smallest step, will move you forward."',
+        bio: 'Canadian engineer, former Royal Canadian Air Force fighter pilot, and veteran astronaut. Commanded Expedition 35 on the ISS, becoming globally renowned for bringing orbital science to humanity through music and social media.',
+        time: '166 Days',
+        missions: 'STS-74, STS-100, Expedition 34/35',
+        eva: '14h 50m (First Canadian EVA)',
+        status: 'Order of Canada / ISS Commander',
+        hud: 'CUPOLA â€¢ HORIZON VISIBLE',
+        achievements: 'â€¢ First Canadian to perform an extravehicular spacewalk (installing Canadarm2).<br>â€¢ First Canadian Commander of the International Space Station.<br>â€¢ Conducted over 130 science experiments investigating the effects of microgravity on the human body.<br>â€¢ Recorded the historic first music video in microgravity (Space Oddity).',
+        legacy: 'Hadfield made space science accessible and inspiring to tens of millions of people worldwide. He demonstrated how space exploration can connect humanity through art, wonder, and rigorous scientific discipline.'
+      },
+      'buzz-aldrin': {
+        name: 'BUZZ ALDRIN',
+        tag: 'APOLLO 11 LUNAR PILOT',
+        quote: '"Magnificent desolation." â€” describing the lunar landscape.',
+        bio: 'American engineer and astronaut. Lunar Module pilot on Apollo 11 who stepped onto the lunar surface with Neil Armstrong. Pioneer of orbital mechanics and underwater spacewalk training.',
+        time: '12d 01h 52m',
+        missions: 'Gemini 12, Apollo 11',
+        eva: '7h 52m (EVA & Lunar Surface)',
+        status: 'Apollo 11 Legend',
+        hud: 'EAGLE LM â€¢ TRANQUILITY BASE',
+        achievements: 'â€¢ Second human to walk on the Moon.<br>â€¢ Devised underwater neutral buoyancy training now universally used by all space agencies.<br>â€¢ Successfully completed three record-setting spacewalks on Gemini 12.<br>â€¢ Developed the Aldrin Cycler trajectory for continuous human transit between Earth and Mars.',
+        legacy: 'Aldrin\'s doctoral thesis on orbital rendezvous earned him the nickname "Dr. Rendezvous", and his trajectory calculations remain vital for future Mars exploration architectures.'
+      }
+    };
+
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      let aid = params.get('astronaut') || 'neil-armstrong';
+      if (!ASTRO_DATA[aid]) aid = 'neil-armstrong';
+
+      const d = ASTRO_DATA[aid];
+      document.title = `${d.name} â€” COSMOS Astronaut Dossier`;
+      document.getElementById('a-name').textContent = d.name;
+      document.getElementById('a-tag').textContent = d.tag;
+      document.getElementById('a-quote').textContent = d.quote;
+      document.getElementById('a-bio').textContent = d.bio;
+      document.getElementById('a-spec-time').textContent = d.time;
+      document.getElementById('a-spec-missions').textContent = d.missions;
+      document.getElementById('a-spec-eva').textContent = d.eva;
+      document.getElementById('a-spec-status').textContent = d.status;
+      document.getElementById('a-hud-status').textContent = d.hud;
+      document.getElementById('a-achievements').innerHTML = d.achievements;
+      document.getElementById('a-legacy').textContent = d.legacy;
+
+      ['neil-armstrong', 'yuri-gagarin', 'kalpana-chawla', 'peggy-whitson', 'chris-hadfield', 'buzz-aldrin'].forEach(id => {
+        const el = document.getElementById(`a-link-${id}`);
+        if (el) el.classList.toggle('active', id === aid);
+      });
+    })();
+  </script>
+</body>
+</html>
+

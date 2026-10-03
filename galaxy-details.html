@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Astrophysical profile, stellar population, morphological classification, and discovery logs for deep-space galaxies.">
+  <title>Galaxy Telemetry â€” COSMOS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particle-canvas"></canvas>
+  <div class="cosmic-noise-overlay"></div>
+  <div class="shooting-star-container"></div>
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-ring"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="cosmic-container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="COSMOS Homepage">
+        <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+        <span class="logo-sub">Explore the Unknown</span>
+      </a>
+
+      <nav class="main-nav" role="navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="solar-system.html" class="nav-link">Solar System</a></li>
+          <li class="nav-item"><a href="planets.html" class="nav-link">Planets</a></li>
+          <li class="nav-item"><a href="black-holes.html" class="nav-link">Black Holes</a></li>
+          <li class="nav-item"><a href="galaxies.html" class="nav-link active">Galaxies</a></li>
+          <li class="nav-item"><a href="space-missions.html" class="nav-link">Missions</a></li>
+          <li class="nav-item"><a href="astronauts.html" class="nav-link">Astronauts</a></li>
+          <li class="nav-item"><a href="space-timeline.html" class="nav-link">Timeline</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="search.html" class="icon-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a>
+        <button class="sound-toggle" aria-label="Toggle Sound"><span class="sound-dot"></span><span class="sound-text">SOUND OFF</span></button>
+        <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" role="dialog">
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item"><a href="solar-system.html" class="mobile-nav-link">Solar System</a></li>
+      <li class="mobile-nav-item"><a href="planets.html" class="mobile-nav-link">Planets</a></li>
+      <li class="mobile-nav-item"><a href="black-holes.html" class="mobile-nav-link">Black Holes</a></li>
+      <li class="mobile-nav-item"><a href="galaxies.html" class="mobile-nav-link active">Galaxies</a></li>
+      <li class="mobile-nav-item"><a href="space-missions.html" class="mobile-nav-link">Missions</a></li>
+      <li class="mobile-nav-item"><a href="astronauts.html" class="mobile-nav-link">Astronauts</a></li>
+      <li class="mobile-nav-item"><a href="space-timeline.html" class="mobile-nav-link">Timeline</a></li>
+      <li class="mobile-nav-item"><a href="search.html" class="mobile-nav-link">Search Terminal</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <!-- Quick Switcher Bar -->
+    <div style="background: rgba(6, 21, 45, 0.7); border-bottom: 1px solid rgba(0, 168, 255, 0.15); padding: 0.75rem 0; margin-top: var(--header-height); position: relative; z-index: 100;">
+      <div class="cosmic-container" style="display: flex; gap: 0.75rem; overflow-x: auto;">
+        <a href="galaxy-details.html?galaxy=milky-way" id="g-link-milky-way" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">MILKY WAY</a>
+        <a href="galaxy-details.html?galaxy=andromeda" id="g-link-andromeda" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">ANDROMEDA (M31)</a>
+        <a href="galaxy-details.html?galaxy=sombrero" id="g-link-sombrero" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">SOMBRERO (M104)</a>
+        <a href="galaxy-details.html?galaxy=whirlpool" id="g-link-whirlpool" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">WHIRLPOOL (M51)</a>
+        <a href="galaxy-details.html?galaxy=triangulum" id="g-link-triangulum" class="filter-btn" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;">TRIANGULUM (M33)</a>
+      </div>
+    </div>
+
+    <!-- Galaxy Hero -->
+    <section class="page-hero" style="padding-top: 60px; padding-bottom: 40px;">
+      <div class="cosmic-container">
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; text-align: left;">
+          <div>
+            <span class="section-tag" id="galaxy-tag">MAJOR SPIRAL GALAXY</span>
+            <h1 class="section-title" id="galaxy-name" style="font-size: clamp(2.6rem, 5vw, 4.4rem); margin-bottom: 1rem;">ANDROMEDA</h1>
+            <p style="font-size: 1.15rem; color: var(--soft-space-gray); line-height: 1.8; margin-bottom: 2rem;" id="galaxy-desc">
+              The Andromeda Galaxy (Messier 31) is a barred spiral galaxy approximately 2.5 million light-years from Earth and the largest constituent of the Local Group of galaxies.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="#telemetry" class="cosmic-btn cosmic-btn-primary">SURVEY DOSSIER â†“</a>
+              <a href="galaxies.html" class="cosmic-btn cosmic-btn-secondary">ALL GALAXIES</a>
+            </div>
+          </div>
+
+          <!-- Dynamic Galaxy Graphic -->
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <div id="galaxy-visual" style="width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(34, 211, 238, 0.6) 0%, rgba(10, 77, 140, 0.8) 45%, rgba(6, 21, 45, 0.9) 70%, #02040A 100%); box-shadow: 0 0 80px rgba(0, 168, 255, 0.4); animation: planetRotate 140s linear infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Telemetry Specs Grid -->
+    <section class="section-spacing" id="telemetry" style="padding-top: 40px;">
+      <div class="cosmic-container">
+        <div class="telemetry-specs-grid">
+          <div class="spec-card">
+            <div class="spec-card-val" id="g-spec-size">220,000 Light-Years</div>
+            <div class="spec-card-lbl">DIAMETER SPAN</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-val" id="g-spec-dist">2.537 Million ly</div>
+            <div class="spec-card-lbl">DISTANCE FROM EARTH</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-val" id="g-spec-stars">~1 Trillion Stars</div>
+            <div class="spec-card-lbl">STELLAR POPULATION</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-val" id="g-spec-type">SA(s)b Spiral</div>
+            <div class="spec-card-lbl">HUBBLE CLASSIFICATION</div>
+          </div>
+        </div>
+
+        <!-- Detailed Observational Sections -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+          <div class="glass-card" style="padding: 2.5rem;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">DISCOVERY &amp; HISTORIC CHRONOLOGY</h3>
+            <p style="font-size: 0.95rem; color: var(--soft-space-gray); line-height: 1.8;" id="g-discovery-text">
+              Observed by Persian astronomer Abd al-Rahman al-Sufi in 964 CE as a "little cloud". In 1924, Edwin Hubble resolved Cepheid variable stars in M31 using the Mount Wilson 100-inch Hooker telescope, conclusively proving that spiral nebulae were external "island universes" beyond the Milky Way.
+            </p>
+          </div>
+
+          <div class="glass-card" style="padding: 2.5rem;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">MILKY WAYâ€“ANDROMEDA COLLISION</h3>
+            <p style="font-size: 0.95rem; color: var(--soft-space-gray); line-height: 1.8;" id="g-collision-text">
+              In approximately 4.5 billion years, Andromeda and the Milky Way will engage in a gravitational merger. Because interstellar distances are so vast, individual stars will virtually never collide, but the galaxies will coalesce into a giant elliptical galaxy dubbed "Milkomeda".
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <!-- ==========================================================================
+       ENORMOUS CINEMATIC FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-horizon-glow"></div>
+    <div class="cosmic-container">
+      <div class="footer-top">
+        <div class="footer-callout">
+          <h3>READY TO EXPLORE THE UNKNOWN?</h3>
+          <p>Join millions across Earth discovering worlds beyond our atmosphere.</p>
+        </div>
+        <a href="solar-system.html" class="cosmic-btn cosmic-btn-primary">
+          LAUNCH MISSION <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+            <span class="logo-sub">Explore the Unknown</span>
+          </a>
+          <p class="footer-about-text">
+            An ultra-premium interactive astronomical observatory platform engineered for scientific wonder, documentary realism, and interstellar discovery.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan);">
+            STATION STATUS: ONLINE • ALL ARRAYS OPERATIONAL
+          </div>
+        </div>
+
+        <!-- Col 2: Explore -->
+        <div>
+          <h4 class="footer-col-title">EXPLORE</h4>
+          <ul class="footer-links">
+            <li><a href="solar-system.html">Solar System</a></li>
+            <li><a href="planets.html">All Planets</a></li>
+            <li><a href="galaxies.html">Galaxies Database</a></li>
+            <li><a href="black-holes.html">Black Hole Singularities</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Discover -->
+        <div>
+          <h4 class="footer-col-title">DISCOVER</h4>
+          <ul class="footer-links">
+            <li><a href="space-missions.html">Space Missions</a></li>
+            <li><a href="astronauts.html">Astronaut Pioneers</a></li>
+            <li><a href="space-timeline.html">Cosmic Timeline</a></li>
+            <li><a href="search.html">Search Terminal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Project -->
+        <div>
+          <h4 class="footer-col-title">OBSERVATORY</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Project</a></li>
+            <li><a href="planet-details.html?planet=jupiter">Featured Planet</a></li>
+            <li><a href="galaxy-details.html?galaxy=andromeda">Featured Galaxy</a></li>
+            <li><a href="mission-details.html?mission=jwst">Featured Mission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Telemetry Dispatch -->
+        <div>
+          <h4 class="footer-col-title">TELEMETRY DISPATCH</h4>
+          <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.6;">
+            Subscribe to receive real-time planetary observations, rover alerts, and deep-space telemetry direct to your interface.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Telemetry channel confirmed. You are registered on the COSMOS frequency.');">
+            <input type="email" placeholder="Enter observer email..." class="footer-input" required>
+            <button type="submit" class="cosmic-btn cosmic-btn-primary" style="padding: 0.75rem 1.25rem;">JOIN</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>COSMOS © 2026 • EXPLORE BEYOND THE EDGE OF HUMANITY.</div>
+        <div>DESIGNED WITH NASA & SCIENTIFIC OBSERVATION DATA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/stars.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/planets.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const GALAXY_DATA = {
+      'andromeda': {
+        name: 'ANDROMEDA (M31)',
+        tag: 'MAJOR SPIRAL GALAXY',
+        desc: 'The Andromeda Galaxy is a barred spiral galaxy approximately 2.5 million light-years from Earth and the largest constituent of the Local Group, hosting over one trillion stars.',
+        size: '220,000 Light-Years',
+        dist: '2.537 Million ly',
+        stars: '~1 Trillion Stars',
+        type: 'SA(s)b Barred Spiral',
+        discovery: 'Cataloged by Abd al-Rahman al-Sufi in 964 CE and later by Charles Messier in 1764. In 1924, Edwin Hubble resolved Cepheid variable stars inside it, definitively establishing the scale of the universe.',
+        collision: 'Traveling toward our galaxy at 110 km/s. In 4.5 billion years, our two galaxies will collide and merge to form a gigantic elliptical galaxy nicknamed Milkomeda.'
+      },
+      'milky-way': {
+        name: 'MILKY WAY GALAXY',
+        tag: 'OUR HOME STAR SYSTEM',
+        desc: 'A barred spiral galaxy containing between 100 and 400 billion stars. Our solar system is located within the Orion Spur, roughly 26,000 light-years from the galactic center.',
+        size: '100,000 Light-Years',
+        dist: '0 ly (Native)',
+        stars: '100-400 Billion',
+        type: 'SBbc Barred Spiral',
+        discovery: 'Recognized as distinct stars by Galileo Galilei in 1610 with his optical telescope. Modern Gaia space telescope maps over 1.8 billion stars with extreme micro-arcsecond astrometry.',
+        collision: 'Currently consuming dwarf galaxies including the Sagittarius Dwarf Spheroidal Galaxy, while locked in a long-term gravitational dance with Andromeda and Triangulum.'
+      },
+      'sombrero': {
+        name: 'SOMBRERO GALAXY (M104)',
+        tag: 'UNUSUAL LENTICULAR CORE',
+        desc: 'Located in the constellation Virgo, this galaxy features a brilliant nucleus, an unusually large central bulge, and a prominent dark dust lane across its tilted disk.',
+        size: '50,000 Light-Years',
+        dist: '31.1 Million ly',
+        stars: '~800 Billion',
+        type: 'SA(s)a / Lenticular',
+        discovery: 'Discovered by Pierre MÃ©chain in 1781. Vesto Slipher detected in 1912 that it was moving away at 1,000 km/s, providing early clues of the expanding universe.',
+        collision: 'Harbors an ultra-massive black hole at its center with a mass of roughly 1 billion solar massesâ€”one of the most massive black holes in nearby galaxies.'
+      },
+      'whirlpool': {
+        name: 'WHIRLPOOL GALAXY (M51)',
+        tag: 'GRAND-DESIGN SPIRAL',
+        desc: 'Located in the constellation Canes Venatici, the Whirlpool Galaxy was the first galaxy classified as a spiral. It is famous for its graceful spiral arms and interaction with companion galaxy NGC 5195.',
+        size: '60,000 Light-Years',
+        dist: '23 Million ly',
+        stars: '~100 Billion',
+        type: 'SA(s)bc Grand Design',
+        discovery: 'Discovered by Charles Messier in 1773. In 1845, Lord Rosse identified its majestic spiral structure using his 72-inch "Leviathan of Parsonstown" telescope in Ireland.',
+        collision: 'The gravitational interaction with NGC 5195 compresses hydrogen gas, triggering high rates of star formation depicted by glowing pink emission nebulae along its arms.'
+      },
+      'triangulum': {
+        name: 'TRIANGULUM GALAXY (M33)',
+        tag: 'LOCAL GROUP SPIRAL',
+        desc: 'The third-largest galaxy in our Local Group, Triangulum is a textbook unbarred spiral galaxy with loose, wound arms filled with active star-forming H II regions.',
+        size: '60,000 Light-Years',
+        dist: '2.73 Million ly',
+        stars: '~40 Billion',
+        type: 'SA(s)cd Pure Spiral',
+        discovery: 'Possibly seen by Hodierna before 1654 and independently discovered by Charles Messier in 1764. One of the most distant permanent objects visible to the naked human eye under pitch-black skies.',
+        collision: 'Gravitationally tethered to the Andromeda Galaxy. Likely to merge into the Milkomeda system after the initial collision between the Milky Way and Andromeda.'
+      }
+    };
+
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      let gid = params.get('galaxy') || 'andromeda';
+      if (!GALAXY_DATA[gid]) gid = 'andromeda';
+
+      const d = GALAXY_DATA[gid];
+      document.title = `${d.name} â€” COSMOS Galaxy Telemetry`;
+      document.getElementById('galaxy-name').textContent = d.name;
+      document.getElementById('galaxy-tag').textContent = d.tag;
+      document.getElementById('galaxy-desc').textContent = d.desc;
+      document.getElementById('g-spec-size').textContent = d.size;
+      document.getElementById('g-spec-dist').textContent = d.dist;
+      document.getElementById('g-spec-stars').textContent = d.stars;
+      document.getElementById('g-spec-type').textContent = d.type;
+      document.getElementById('g-discovery-text').textContent = d.discovery;
+      document.getElementById('g-collision-text').textContent = d.collision;
+
+      ['milky-way', 'andromeda', 'sombrero', 'whirlpool', 'triangulum'].forEach(id => {
+        const el = document.getElementById(`g-link-${id}`);
+        if (el) el.classList.toggle('active', id === gid);
+      });
+    })();
+  </script>
+</body>
+</html>
+

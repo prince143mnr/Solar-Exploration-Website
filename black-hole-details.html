@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Deep dive singularity analysis into Sagittarius A*, Messier 87*, and Cygnus X-1 with Event Horizon Telescope observation metrics.">
+  <title>Black Hole Telemetry â€” COSMOS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particle-canvas"></canvas>
+  <div class="cosmic-noise-overlay"></div>
+  <div class="shooting-star-container"></div>
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-ring"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="cosmic-container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="COSMOS Homepage">
+        <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+        <span class="logo-sub">Explore the Unknown</span>
+      </a>
+
+      <nav class="main-nav" role="navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="solar-system.html" class="nav-link">Solar System</a></li>
+          <li class="nav-item"><a href="planets.html" class="nav-link">Planets</a></li>
+          <li class="nav-item"><a href="black-holes.html" class="nav-link active">Black Holes</a></li>
+          <li class="nav-item"><a href="galaxies.html" class="nav-link">Galaxies</a></li>
+          <li class="nav-item"><a href="space-missions.html" class="nav-link">Missions</a></li>
+          <li class="nav-item"><a href="astronauts.html" class="nav-link">Astronauts</a></li>
+          <li class="nav-item"><a href="space-timeline.html" class="nav-link">Timeline</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="search.html" class="icon-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a>
+        <button class="sound-toggle" aria-label="Toggle Sound"><span class="sound-dot"></span><span class="sound-text">SOUND OFF</span></button>
+        <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" role="dialog">
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item"><a href="solar-system.html" class="mobile-nav-link">Solar System</a></li>
+      <li class="mobile-nav-item"><a href="planets.html" class="mobile-nav-link">Planets</a></li>
+      <li class="mobile-nav-item"><a href="black-holes.html" class="mobile-nav-link active">Black Holes</a></li>
+      <li class="mobile-nav-item"><a href="galaxies.html" class="mobile-nav-link">Galaxies</a></li>
+      <li class="mobile-nav-item"><a href="space-missions.html" class="mobile-nav-link">Missions</a></li>
+      <li class="mobile-nav-item"><a href="astronauts.html" class="mobile-nav-link">Astronauts</a></li>
+      <li class="mobile-nav-item"><a href="space-timeline.html" class="mobile-nav-link">Timeline</a></li>
+      <li class="mobile-nav-item"><a href="search.html" class="mobile-nav-link">Search Terminal</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <!-- Quick Switcher Bar -->
+    <div style="background: rgba(6, 21, 45, 0.7); border-bottom: 1px solid rgba(0, 168, 255, 0.15); padding: 0.75rem 0; margin-top: var(--header-height); position: relative; z-index: 100;">
+      <div class="cosmic-container" style="display: flex; gap: 1rem; overflow-x: auto;">
+        <a href="black-hole-details.html?bh=sagittarius-a" id="bh-link-sagittarius-a" class="filter-btn" style="padding: 0.4rem 1rem; font-size: 0.75rem;">SAGITTARIUS A*</a>
+        <a href="black-hole-details.html?bh=m87" id="bh-link-m87" class="filter-btn" style="padding: 0.4rem 1rem; font-size: 0.75rem;">MESSIER 87* (M87*)</a>
+        <a href="black-hole-details.html?bh=cygnus-x1" id="bh-link-cygnus-x1" class="filter-btn" style="padding: 0.4rem 1rem; font-size: 0.75rem;">CYGNUS X-1</a>
+      </div>
+    </div>
+
+    <!-- Black Hole Hero -->
+    <section class="page-hero" style="padding-top: 60px; padding-bottom: 40px;">
+      <div class="cosmic-container">
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; text-align: left;">
+          <div>
+            <span class="section-tag" id="bh-tag" style="color: var(--accent-gold); border-color: rgba(251, 191, 36, 0.3);">GALACTIC CORE SINGULARITY</span>
+            <h1 class="section-title" id="bh-name" style="font-size: clamp(2.6rem, 5vw, 4.4rem); margin-bottom: 1rem;">SAGITTARIUS A*</h1>
+            <p style="font-size: 1.15rem; color: var(--soft-space-gray); line-height: 1.8; margin-bottom: 2rem;" id="bh-desc">
+              The supermassive black hole at the dynamical center of the Milky Way galaxy. Imaged in millimeter wavelengths by the Event Horizon Telescope, unveiling a glowing ring formed by photons orbiting the black hole shadow.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="#telemetry" class="cosmic-btn cosmic-btn-primary">PHYSICS DOSSIER â†“</a>
+              <a href="black-holes.html" class="cosmic-btn cosmic-btn-secondary">ALL BLACK HOLES</a>
+            </div>
+          </div>
+
+          <!-- Dynamic Black Hole Graphic -->
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <div class="black-hole-engine" style="width: 360px; height: 360px;">
+              <div class="accretion-disk" style="width: 420px; height: 150px;"></div>
+              <div class="gravitational-lens" style="width: 280px; height: 280px;"></div>
+              <div class="event-horizon" style="width: 180px; height: 180px;">
+                <div class="singularity-core"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Telemetry Specs Grid -->
+    <section class="section-spacing" id="telemetry" style="padding-top: 40px;">
+      <div class="cosmic-container">
+        <div class="telemetry-specs-grid">
+          <div class="spec-card">
+            <div class="spec-card-val" id="bh-spec-mass">4.154 Million Mâ˜‰</div>
+            <div class="spec-card-lbl">SOLAR MASSES</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-val" id="bh-spec-dist">26,000 Light-Years</div>
+            <div class="spec-card-lbl">DISTANCE FROM EARTH</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-val" id="bh-spec-radius">12 Million km (~17 Râ˜‰)</div>
+            <div class="spec-card-lbl">SCHWARZSCHILD RADIUS</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-val" id="bh-spec-type">Supermassive (Kerr)</div>
+            <div class="spec-card-lbl">CLASSIFICATION</div>
+          </div>
+        </div>
+
+        <!-- Relativistic Insights -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+          <div class="glass-card" style="padding: 2.5rem;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">EVENT HORIZON TELESCOPE OBSERVATION</h3>
+            <p style="font-size: 0.95rem; color: var(--soft-space-gray); line-height: 1.8;" id="bh-eht-notes">
+              Using Very Long Baseline Interferometry (VLBI) across eight synchronized radio observatories spanning Antarctica, Chile, Hawaii, and Europe, astronomers created an Earth-sized virtual telescope. In 2022, the first image of Sagittarius A* was revealed, confirming Einstein's General Relativity with extraordinary precision.
+            </p>
+          </div>
+
+          <div class="glass-card" style="padding: 2.5rem;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--cosmic-cyan); margin-bottom: 1rem;">RELATIVISTIC BEAMING &amp; SHADOW</h3>
+            <p style="font-size: 0.95rem; color: var(--soft-space-gray); line-height: 1.8;" id="bh-physics-notes">
+              Photons emitted by gas revolving toward Earth are amplified by relativistic Doppler brightening, causing one side of the ring to shine brighter than the other. The central dark shadow is roughly 2.6 times the diameter of the Schwarzschild radius due to strong gravitational bending of incoming and outgoing light rays.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <!-- ==========================================================================
+       ENORMOUS CINEMATIC FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-horizon-glow"></div>
+    <div class="cosmic-container">
+      <div class="footer-top">
+        <div class="footer-callout">
+          <h3>READY TO EXPLORE THE UNKNOWN?</h3>
+          <p>Join millions across Earth discovering worlds beyond our atmosphere.</p>
+        </div>
+        <a href="solar-system.html" class="cosmic-btn cosmic-btn-primary">
+          LAUNCH MISSION <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+            <span class="logo-sub">Explore the Unknown</span>
+          </a>
+          <p class="footer-about-text">
+            An ultra-premium interactive astronomical observatory platform engineered for scientific wonder, documentary realism, and interstellar discovery.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan);">
+            STATION STATUS: ONLINE • ALL ARRAYS OPERATIONAL
+          </div>
+        </div>
+
+        <!-- Col 2: Explore -->
+        <div>
+          <h4 class="footer-col-title">EXPLORE</h4>
+          <ul class="footer-links">
+            <li><a href="solar-system.html">Solar System</a></li>
+            <li><a href="planets.html">All Planets</a></li>
+            <li><a href="galaxies.html">Galaxies Database</a></li>
+            <li><a href="black-holes.html">Black Hole Singularities</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Discover -->
+        <div>
+          <h4 class="footer-col-title">DISCOVER</h4>
+          <ul class="footer-links">
+            <li><a href="space-missions.html">Space Missions</a></li>
+            <li><a href="astronauts.html">Astronaut Pioneers</a></li>
+            <li><a href="space-timeline.html">Cosmic Timeline</a></li>
+            <li><a href="search.html">Search Terminal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Project -->
+        <div>
+          <h4 class="footer-col-title">OBSERVATORY</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Project</a></li>
+            <li><a href="planet-details.html?planet=jupiter">Featured Planet</a></li>
+            <li><a href="galaxy-details.html?galaxy=andromeda">Featured Galaxy</a></li>
+            <li><a href="mission-details.html?mission=jwst">Featured Mission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Telemetry Dispatch -->
+        <div>
+          <h4 class="footer-col-title">TELEMETRY DISPATCH</h4>
+          <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.6;">
+            Subscribe to receive real-time planetary observations, rover alerts, and deep-space telemetry direct to your interface.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Telemetry channel confirmed. You are registered on the COSMOS frequency.');">
+            <input type="email" placeholder="Enter observer email..." class="footer-input" required>
+            <button type="submit" class="cosmic-btn cosmic-btn-primary" style="padding: 0.75rem 1.25rem;">JOIN</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>COSMOS © 2026 • EXPLORE BEYOND THE EDGE OF HUMANITY.</div>
+        <div>DESIGNED WITH NASA & SCIENTIFIC OBSERVATION DATA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/stars.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/planets.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Black Hole Detail Dynamic Switcher
+    const BH_DATA = {
+      'sagittarius-a': {
+        name: 'SAGITTARIUS A*',
+        tag: 'GALACTIC CORE SINGULARITY',
+        desc: 'The supermassive black hole at the dynamical center of the Milky Way galaxy. Imaged in millimeter wavelengths by the Event Horizon Telescope, unveiling a glowing ring formed by photons orbiting the black hole shadow.',
+        mass: '4.154 Million Mâ˜‰',
+        dist: '26,000 Light-Years',
+        radius: '12 Million km (~17 Râ˜‰)',
+        type: 'Supermassive (Kerr)',
+        eht: 'Using Very Long Baseline Interferometry (VLBI) across eight synchronized radio observatories spanning Antarctica, Chile, Hawaii, and Europe, astronomers created an Earth-sized virtual telescope. In 2022, the first image of Sagittarius A* was revealed, confirming Einstein\'s General Relativity with extraordinary precision.',
+        physics: 'Photons emitted by gas revolving toward Earth are amplified by relativistic Doppler brightening, causing one side of the ring to shine brighter than the other. The central dark shadow is roughly 2.6 times the diameter of the Schwarzschild radius due to strong gravitational bending.'
+      },
+      'm87': {
+        name: 'MESSIER 87* (M87*)',
+        tag: 'SUPERMASSIVE MONSTER IN VIRGO A',
+        desc: 'One of the most massive known black holes, located in the supergiant elliptical galaxy Messier 87. M87* produces a colossal relativistic plasma jet shooting out over 5,000 light-years at 99% the speed of light.',
+        mass: '6.5 Billion Mâ˜‰',
+        dist: '53.5 Million Light-Years',
+        radius: '19 Billion km (128 AU)',
+        type: 'Supermassive Relativistic',
+        eht: 'In April 2019, M87* became the first black hole ever directly photographed in human history. The silhouette of its event horizon was captured by the EHT, providing historic optical proof of gravitational spacetime closure.',
+        physics: 'The shadow of M87* spans 40 microarcseconds across the sky, equivalent to resolving a credit card on the Moon from Earth. Its accretion disk consumes thousands of Earth masses worth of interstellar gas every day.'
+      },
+      'cygnus-x1': {
+        name: 'CYGNUS X-1',
+        tag: 'FIRST CONFIRMED STELLAR SINGULARITY',
+        desc: 'A galactic X-ray source in the constellation Cygnus. Discovered in 1964 during an Aerobee rocket flight, it was the focus of the famous 1974 scientific wager between Stephen Hawking and Kip Thorne.',
+        mass: '21.2 Mâ˜‰',
+        dist: '7,300 Light-Years',
+        radius: '62.6 km',
+        type: 'Stellar-Mass X-Ray Binary',
+        eht: 'Cygnus X-1 orbits a blue supergiant star (HDE 226868) every 5.6 days. Intense gravitational tides strip atmospheric gas from the blue companion, funneling superheated plasma into a ferocious relativistic accretion disk.',
+        physics: 'Cygnus X-1 spins at over 95% the theoretical maximum speed permitted by general relativity. Its event horizon measures merely 62.6 kilometers across, yet contains the crushed mass of 21 Suns.'
+      }
+    };
+
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      let bhId = params.get('bh') || 'sagittarius-a';
+      if (!BH_DATA[bhId]) bhId = 'sagittarius-a';
+
+      const data = BH_DATA[bhId];
+      document.title = `${data.name} â€” COSMOS Black Hole Dossier`;
+      document.getElementById('bh-name').textContent = data.name;
+      document.getElementById('bh-tag').textContent = data.tag;
+      document.getElementById('bh-desc').textContent = data.desc;
+      document.getElementById('bh-spec-mass').textContent = data.mass;
+      document.getElementById('bh-spec-dist').textContent = data.dist;
+      document.getElementById('bh-spec-radius').textContent = data.radius;
+      document.getElementById('bh-spec-type').textContent = data.type;
+      document.getElementById('bh-eht-notes').textContent = data.eht;
+      document.getElementById('bh-physics-notes').textContent = data.physics;
+
+      // Update active button
+      ['sagittarius-a', 'm87', 'cygnus-x1'].forEach(id => {
+        const el = document.getElementById(`bh-link-${id}`);
+        if (el) el.classList.toggle('active', id === bhId);
+      });
+    })();
+  </script>
+</body>
+</html>
+

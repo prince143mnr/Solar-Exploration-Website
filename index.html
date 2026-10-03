@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="COSMOS — Explore Beyond the Edge of Humanity. An ultra-premium, cinematic, futuristic space exploration platform combining NASA scientific depth with breathtaking visuals.">
+  <title>COSMOS — Explore Beyond the Edge of Humanity</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Canvas Background Engines -->
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particle-canvas"></canvas>
+  <div class="cosmic-noise-overlay"></div>
+  <div class="shooting-star-container"></div>
+
+  <!-- Custom Glowing Cosmic Cursor -->
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-ring"></div>
+
+  <!-- Fixed Transparent & Glass Header -->
+  <header class="site-header" role="banner">
+    <div class="cosmic-container header-inner">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="COSMOS Homepage">
+        <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+        <span class="logo-sub">Explore the Unknown</span>
+      </a>
+
+      <!-- Center Desktop Navigation -->
+      <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="solar-system.html" class="nav-link">Solar System</a>
+          </li>
+          <li class="nav-item">
+            <a href="planets.html" class="nav-link">
+              Planets
+              <svg class="dropdown-caret" viewBox="0 0 10 6" fill="currentColor">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+            </a>
+            <!-- Advanced Mega Menu -->
+            <div class="mega-menu" role="menu">
+              <div class="mega-menu-grid">
+                <a href="planet-details.html?planet=mercury" class="mega-menu-item">
+                  <div class="mega-thumb">
+                    <div class="planet-orb-mini" style="background: radial-gradient(circle at 35% 35%, #CBD5E1, #64748B, #1E293B);"></div>
+                  </div>
+                  <span class="mega-item-title">Mercury</span>
+                  <span class="mega-item-desc">Swift iron world of solar extremes.</span>
+                </a>
+                <a href="planet-details.html?planet=venus" class="mega-menu-item">
+                  <div class="mega-thumb">
+                    <div class="planet-orb-mini" style="background: radial-gradient(circle at 35% 35%, #FDE68A, #D97706, #78350F);"></div>
+                  </div>
+                  <span class="mega-item-title">Venus</span>
+                  <span class="mega-item-desc">Crushing toxic greenhouse inferno.</span>
+                </a>
+                <a href="planet-details.html?planet=earth" class="mega-menu-item">
+                  <div class="mega-thumb">
+                    <div class="planet-orb-mini" style="background: radial-gradient(circle at 35% 35%, #38BDF8, #0284C7, #0F172A);"></div>
+                  </div>
+                  <span class="mega-item-title">Earth</span>
+                  <span class="mega-item-desc">Luminous blue cradle of living oceans.</span>
+                </a>
+                <a href="planet-details.html?planet=mars" class="mega-menu-item">
+                  <div class="mega-thumb">
+                    <div class="planet-orb-mini" style="background: radial-gradient(circle at 35% 35%, #F87171, #DC2626, #450A0A);"></div>
+                  </div>
+                  <span class="mega-item-title">Mars</span>
+                  <span class="mega-item-desc">Crimson frontier of colossal volcanoes.</span>
+                </a>
+                <a href="planet-details.html?planet=jupiter" class="mega-menu-item">
+                  <div class="mega-thumb">
+                    <div class="planet-orb-mini" style="background: repeating-linear-gradient(0deg, #FDE68A, #D97706 15px, #92400E 30px, #FEF3C7 45px);"></div>
+                  </div>
+                  <span class="mega-item-title">Jupiter</span>
+                  <span class="mega-item-desc">Colossal gas giant with ancient storm.</span>
+                </a>
+                <a href="planet-details.html?planet=saturn" class="mega-menu-item">
+                  <div class="mega-thumb">
+                    <div class="planet-orb-mini" style="background: radial-gradient(circle at 35% 35%, #FDE047, #CA8A04, #713F12);"></div>
+                  </div>
+                  <span class="mega-item-title">Saturn</span>
+                  <span class="mega-item-desc">Ringed marvel with ocean moon enceladus.</span>
+                </a>
+                <a href="planet-details.html?planet=uranus" class="mega-menu-item">
+                  <div class="mega-thumb">
+                    <div class="planet-orb-mini" style="background: radial-gradient(circle at 35% 35%, #A7F3D0, #0D9488, #115E59);"></div>
+                  </div>
+                  <span class="mega-item-title">Uranus</span>
+                  <span class="mega-item-desc">Sideways ice giant rolling through space.</span>
+                </a>
+                <a href="planet-details.html?planet=neptune" class="mega-menu-item">
+                  <div class="mega-thumb">
+                    <div class="planet-orb-mini" style="background: radial-gradient(circle at 35% 35%, #60A5FA, #2563EB, #1E3A8A);"></div>
+                  </div>
+                  <span class="mega-item-title">Neptune</span>
+                  <span class="mega-item-desc">Supersonic winds on deep cobalt world.</span>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="black-holes.html" class="nav-link">Black Holes</a>
+          </li>
+          <li class="nav-item">
+            <a href="galaxies.html" class="nav-link">Galaxies</a>
+          </li>
+          <li class="nav-item">
+            <a href="space-missions.html" class="nav-link">Missions</a>
+          </li>
+          <li class="nav-item">
+            <a href="astronauts.html" class="nav-link">Astronauts</a>
+          </li>
+          <li class="nav-item">
+            <a href="space-timeline.html" class="nav-link">Timeline</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="header-actions">
+        <!-- Search Button -->
+        <a href="search.html" class="icon-btn" aria-label="Search Cosmos Database">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </a>
+
+        <!-- Sound Synthesizer Toggle -->
+        <button class="sound-toggle" aria-label="Toggle Cosmic Sound Ambient">
+          <span class="sound-dot"></span>
+          <span class="sound-text">SOUND OFF</span>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Fullscreen Mobile Navigation Experience -->
+  <div class="mobile-menu-overlay" role="dialog" aria-modal="true">
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link active">Home</a></li>
+      <li class="mobile-nav-item"><a href="solar-system.html" class="mobile-nav-link">Solar System</a></li>
+      <li class="mobile-nav-item"><a href="planets.html" class="mobile-nav-link">Planets</a></li>
+      <li class="mobile-nav-item"><a href="black-holes.html" class="mobile-nav-link">Black Holes</a></li>
+      <li class="mobile-nav-item"><a href="galaxies.html" class="mobile-nav-link">Galaxies</a></li>
+      <li class="mobile-nav-item"><a href="space-missions.html" class="mobile-nav-link">Missions</a></li>
+      <li class="mobile-nav-item"><a href="astronauts.html" class="mobile-nav-link">Astronauts</a></li>
+      <li class="mobile-nav-item"><a href="space-timeline.html" class="mobile-nav-link">Timeline</a></li>
+      <li class="mobile-nav-item"><a href="search.html" class="mobile-nav-link">Search Terminal</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About Project</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <a href="search.html" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.75rem 1.5rem;">SEARCH DATABASE</a>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ==========================================================================
+         SECTION 1: CINEMATIC HERO
+         ========================================================================== -->
+    <section class="hero-section" data-section="hero">
+      <div class="hero-universe-layer"></div>
+      <div class="hero-nebula hero-nebula-blue" data-parallax-depth="0.03"></div>
+      <div class="hero-nebula hero-nebula-purple" data-parallax-depth="0.02"></div>
+
+      <!-- 7-Layer Realistic 4K Earth Visualization -->
+      <div class="hero-earth-container" data-parallax-depth="0.06">
+        <div class="earth-atmosphere"></div>
+        <div class="earth-globe">
+          <div class="earth-texture-layer"></div>
+          <div class="earth-clouds"></div>
+        </div>
+      </div>
+
+      <div class="cosmic-container">
+        <div class="hero-content">
+          <span class="hero-subtag reveal-up delay-1">HUMANITY'S DEEP FRONTIER</span>
+          <h1 class="hero-title reveal-up delay-2">
+            <span class="title-small">EXPLORE</span>
+            <span class="title-highlight">BEYOND THE EDGE</span><br>
+            OF HUMANITY.
+          </h1>
+          <p class="hero-desc reveal-up delay-3">
+            Humanity has always looked toward the stars. Now, step beyond the boundaries of Earth and journey through planets, galaxies, black holes, cosmic mysteries, and the greatest missions ever undertaken.
+          </p>
+          <div class="hero-actions reveal-up delay-4">
+            <a href="solar-system.html" class="cosmic-btn cosmic-btn-primary">
+              BEGIN THE JOURNEY <span class="arrow">→</span>
+            </a>
+            <a href="planets.html" class="cosmic-btn cosmic-btn-secondary">
+              EXPLORE THE UNIVERSE
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Scroll Prompt -->
+      <div class="hero-scroll-indicator">
+        <div class="scroll-mouse-icon">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>SCROLL TO EXPLORE</span>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2: EXPLORE THE COSMOS & STATS
+         ========================================================================== -->
+    <section class="section-spacing" data-section="cosmos-intro">
+      <div class="cosmic-container">
+        <div style="text-align: center;" class="reveal-up">
+          <span class="section-tag">COSMIC TELEMETRY</span>
+          <h2 class="section-title">THE UNIVERSE IS WAITING.</h2>
+          <p class="section-subtitle">
+            13.8 BILLION YEARS OF COSMIC HISTORY. ONE ENDLESS JOURNEY THROUGH THE IMMENSITY OF SPACE AND TIME.
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card tilt-card reveal-up delay-1">
+            <div class="stat-number" data-target="8">0</div>
+            <div class="stat-label">Planets Explored</div>
+          </div>
+          <div class="stat-card tilt-card reveal-up delay-2">
+            <div class="stat-number" data-target="100" data-suffix="+">0</div>
+            <div class="stat-label">Historic Missions</div>
+          </div>
+          <div class="stat-card tilt-card reveal-up delay-3">
+            <div class="stat-number" data-target="2" data-suffix="T">0</div>
+            <div class="stat-label">Observable Galaxies</div>
+          </div>
+          <div class="stat-card tilt-card reveal-up delay-4">
+            <div class="stat-number" data-target="13.8" data-suffix="B">0</div>
+            <div class="stat-label">Years of Cosmic History</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: INTERACTIVE HORIZONTAL SOLAR SYSTEM
+         ========================================================================== -->
+    <section class="section-spacing" data-section="solar-system-interactive">
+      <div class="cosmic-container">
+        <div style="text-align: center;" class="reveal-up">
+          <span class="section-tag">ORBITAL SIMULATION</span>
+          <h2 class="section-title">OUR COSMIC <span class="gradient-text">NEIGHBORHOOD</span></h2>
+          <p class="section-subtitle">
+            Interact with the celestial bodies of our solar system. Click any world to initiate real-time telemetry extraction.
+          </p>
+        </div>
+
+        <div class="solar-system-wrapper reveal-up delay-2">
+          <!-- Horizontal Orbital Track -->
+          <div class="solar-system-track" id="solar-system-track">
+            <!-- Sun -->
+            <div class="celestial-item" data-planet="sun" role="button" tabindex="0">
+              <div class="celestial-body sun"></div>
+              <span class="celestial-name">The Sun</span>
+              <span class="celestial-type">Yellow Dwarf Star</span>
+            </div>
+
+            <!-- Mercury -->
+            <div class="celestial-item" data-planet="mercury" role="button" tabindex="0">
+              <div class="celestial-body mercury"></div>
+              <span class="celestial-name">Mercury</span>
+              <span class="celestial-type">0.39 AU</span>
+            </div>
+
+            <!-- Venus -->
+            <div class="celestial-item" data-planet="venus" role="button" tabindex="0">
+              <div class="celestial-body venus"></div>
+              <span class="celestial-name">Venus</span>
+              <span class="celestial-type">0.72 AU</span>
+            </div>
+
+            <!-- Earth -->
+            <div class="celestial-item active" data-planet="earth" role="button" tabindex="0">
+              <div class="celestial-body earth"></div>
+              <span class="celestial-name">Earth</span>
+              <span class="celestial-type">1.00 AU</span>
+            </div>
+
+            <!-- Mars -->
+            <div class="celestial-item" data-planet="mars" role="button" tabindex="0">
+              <div class="celestial-body mars"></div>
+              <span class="celestial-name">Mars</span>
+              <span class="celestial-type">1.52 AU</span>
+            </div>
+
+            <!-- Jupiter -->
+            <div class="celestial-item" data-planet="jupiter" role="button" tabindex="0">
+              <div class="celestial-body jupiter"></div>
+              <span class="celestial-name">Jupiter</span>
+              <span class="celestial-type">5.20 AU</span>
+            </div>
+
+            <!-- Saturn -->
+            <div class="celestial-item" data-planet="saturn" role="button" tabindex="0">
+              <div class="celestial-body saturn">
+                <div class="saturn-ring"></div>
+              </div>
+              <span class="celestial-name">Saturn</span>
+              <span class="celestial-type">9.58 AU</span>
+            </div>
+
+            <!-- Uranus -->
+            <div class="celestial-item" data-planet="uranus" role="button" tabindex="0">
+              <div class="celestial-body uranus"></div>
+              <span class="celestial-name">Uranus</span>
+              <span class="celestial-type">19.2 AU</span>
+            </div>
+
+            <!-- Neptune -->
+            <div class="celestial-item" data-planet="neptune" role="button" tabindex="0">
+              <div class="celestial-body neptune"></div>
+              <span class="celestial-name">Neptune</span>
+              <span class="celestial-type">30.1 AU</span>
+            </div>
+
+            <!-- Pluto -->
+            <div class="celestial-item" data-planet="pluto" role="button" tabindex="0">
+              <div class="celestial-body" style="width: 28px; height: 28px; background: radial-gradient(circle at 35% 35%, #E2E8F0, #64748B, #334155); box-shadow: 0 0 10px rgba(226, 232, 240, 0.4);"></div>
+              <span class="celestial-name">Pluto</span>
+              <span class="celestial-type">39.5 AU</span>
+            </div>
+          </div>
+
+          <!-- Live Planetary Telemetry Drawer -->
+          <div class="planet-telemetry-drawer" id="planet-telemetry-drawer">
+            <div class="drawer-preview-orb"></div>
+            <div class="drawer-info">
+              <h3 class="drawer-title">EARTH</h3>
+              <div class="drawer-subtitle">THE BLUE OASIS OF LIFE</div>
+              <div class="drawer-metrics">
+                <div class="drawer-metric-item">
+                  <span class="drawer-metric-val drawer-dist">149.6M km</span>
+                  <span class="drawer-metric-lbl">Distance to Sun</span>
+                </div>
+                <div class="drawer-metric-item">
+                  <span class="drawer-metric-val drawer-diam">12,742 km</span>
+                  <span class="drawer-metric-lbl">Diameter</span>
+                </div>
+                <div class="drawer-metric-item">
+                  <span class="drawer-metric-val drawer-moons">1</span>
+                  <span class="drawer-metric-lbl">Moons</span>
+                </div>
+                <div class="drawer-metric-item">
+                  <span class="drawer-metric-val drawer-period">365.25 Days</span>
+                  <span class="drawer-metric-lbl">Orbital Period</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <a href="planet-details.html?planet=earth" class="cosmic-btn cosmic-btn-primary drawer-explore-btn">
+                EXPLORE EARTH <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: FEATURED PLANETS (3D Tilt Cards)
+         ========================================================================== -->
+    <section class="section-spacing" data-section="featured-planets">
+      <div class="cosmic-container">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem;" class="reveal-up">
+          <div>
+            <span class="section-tag">CELESTIAL CATALOG</span>
+            <h2 class="section-title">FEATURED <span class="gradient-text">WORLDS</span></h2>
+            <p class="section-subtitle">Examine the high-resolution planetary environments shaping our cosmic architecture.</p>
+          </div>
+          <a href="planets.html" class="cosmic-btn cosmic-btn-secondary">VIEW ALL 8 WORLDS →</a>
+        </div>
+
+        <div class="planets-grid">
+          <!-- Mars Card -->
+          <a href="planet-details.html?planet=mars" class="planet-feature-card tilt-card reveal-up delay-1">
+            <div class="planet-card-visual" style="background: radial-gradient(circle at 35% 35%, #F87171, #DC2626, #450A0A); box-shadow: 0 0 50px rgba(220, 38, 38, 0.4);"></div>
+            <div class="planet-card-content tilt-inner">
+              <span class="planet-card-category">Terrestrial World</span>
+              <h3 class="planet-card-name">MARS</h3>
+              <p class="planet-card-summary">The Red Planet, home to Olympus Mons and prime destination for humankind's next interplanetary voyage.</p>
+              <span class="cosmic-btn cosmic-btn-secondary" style="padding: 0.65rem 1.4rem; font-size: 0.78rem;">ANALYZE DATA →</span>
+            </div>
+          </a>
+
+          <!-- Jupiter Card -->
+          <a href="planet-details.html?planet=jupiter" class="planet-feature-card tilt-card reveal-up delay-2">
+            <div class="planet-card-visual" style="background: repeating-linear-gradient(0deg, #FDE68A, #D97706 15px, #92400E 30px, #FEF3C7 45px); box-shadow: 0 0 50px rgba(217, 119, 6, 0.4);"></div>
+            <div class="planet-card-content tilt-inner">
+              <span class="planet-card-category">Gas Giant</span>
+              <h3 class="planet-card-name">JUPITER</h3>
+              <p class="planet-card-summary">The colossal gas monarch with 95 moons and the majestic Great Red Spot anticyclonic storm.</p>
+              <span class="cosmic-btn cosmic-btn-secondary" style="padding: 0.65rem 1.4rem; font-size: 0.78rem;">ANALYZE DATA →</span>
+            </div>
+          </a>
+
+          <!-- Saturn Card -->
+          <a href="planet-details.html?planet=saturn" class="planet-feature-card tilt-card reveal-up delay-3">
+            <div class="planet-card-visual" style="background: radial-gradient(circle at 35% 35%, #FDE047, #CA8A04, #713F12); box-shadow: 0 0 50px rgba(202, 138, 4, 0.4);"></div>
+            <div class="planet-card-content tilt-inner">
+              <span class="planet-card-category">Ringed Giant</span>
+              <h3 class="planet-card-name">SATURN</h3>
+              <p class="planet-card-summary">Crowned with dazzling icy rings spanning 282,000 kilometers and the hydrocarbon seas of Titan.</p>
+              <span class="cosmic-btn cosmic-btn-secondary" style="padding: 0.65rem 1.4rem; font-size: 0.78rem;">ANALYZE DATA →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5: BLACK HOLE SIMULATION
+         ========================================================================== -->
+    <section class="section-spacing" data-section="black-holes">
+      <div class="cosmic-container">
+        <div style="text-align: center;" class="reveal-up">
+          <span class="section-tag">GENERAL RELATIVITY</span>
+          <h2 class="section-title">WHERE LIGHT <span class="gradient-text">CANNOT ESCAPE</span></h2>
+          <p class="section-subtitle">
+            Singularities where spacetime curves into infinity. Experience the relativistic Doppler accretion disk of a supermassive black hole.
+          </p>
+        </div>
+
+        <div class="black-hole-showcase reveal-up delay-2">
+          <!-- Relativistic Black Hole Simulation Engine -->
+          <div class="black-hole-engine">
+            <div class="accretion-disk"></div>
+            <div class="gravitational-lens"></div>
+            <div class="event-horizon">
+              <div class="singularity-core"></div>
+            </div>
+          </div>
+
+          <!-- Real-Time Physics Telemetry Overlay -->
+          <div class="black-hole-overlay-content">
+            <div class="black-hole-data-box">
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-gold); text-transform: uppercase; margin-bottom: 0.4rem;">TARGET: SAGITTARIUS A*</div>
+              <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--starlight-white); margin-bottom: 0.6rem;">GALACTIC CENTER SINGULARITY</h3>
+              <p style="font-size: 0.88rem; color: var(--soft-space-gray); line-height: 1.6;">
+                Mass: 4.154 million Solar Masses. Light paths bend 360 degrees around the photon sphere through gravitational lensing.
+              </p>
+            </div>
+            <div>
+              <a href="black-holes.html" class="cosmic-btn cosmic-btn-primary">
+                ENTER THE DARKNESS <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: GALAXIES BEYOND
+         ========================================================================== -->
+    <section class="section-spacing" data-section="galaxies">
+      <div class="cosmic-container">
+        <div style="text-align: center;" class="reveal-up">
+          <span class="section-tag">DEEP SPACE PHENOMENA</span>
+          <h2 class="section-title">BEYOND OUR <span class="gradient-text">GALAXY</span></h2>
+          <p class="section-subtitle">Two trillion cosmic islands drifting through the expanding fabric of the universe.</p>
+        </div>
+
+        <div class="galaxies-grid">
+          <!-- Milky Way Card -->
+          <a href="galaxy-details.html?galaxy=milky-way" class="galaxy-card tilt-card reveal-up delay-1">
+            <div class="galaxy-bg" style="background-image: radial-gradient(circle, rgba(0, 168, 255, 0.4) 0%, rgba(109, 40, 217, 0.6) 50%, #02040A 90%);"></div>
+            <div class="galaxy-info tilt-inner">
+              <span class="galaxy-type-tag">Barred Spiral</span>
+              <h3 class="galaxy-name">MILKY WAY</h3>
+              <div class="galaxy-meta">
+                <span>Diameter: 100,000 ly</span>
+                <span>Stars: ~400 Billion</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">Our cosmic home, rotating around Sagittarius A* once every 230 million years.</p>
+            </div>
+          </a>
+
+          <!-- Andromeda Card -->
+          <a href="galaxy-details.html?galaxy=andromeda" class="galaxy-card tilt-card reveal-up delay-2">
+            <div class="galaxy-bg" style="background-image: radial-gradient(circle, rgba(34, 211, 238, 0.4) 0%, rgba(6, 21, 45, 0.8) 60%, #02040A 90%);"></div>
+            <div class="galaxy-info tilt-inner">
+              <span class="galaxy-type-tag">Major Spiral</span>
+              <h3 class="galaxy-name">ANDROMEDA (M31)</h3>
+              <div class="galaxy-meta">
+                <span>Distance: 2.537M ly</span>
+                <span>Stars: ~1 Trillion</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">The colossal spiral destined to merge with our Milky Way in 4.5 billion years.</p>
+            </div>
+          </a>
+
+          <!-- Sombrero Card -->
+          <a href="galaxy-details.html?galaxy=sombrero" class="galaxy-card tilt-card reveal-up delay-3">
+            <div class="galaxy-bg" style="background-image: radial-gradient(circle, rgba(251, 191, 36, 0.4) 0%, rgba(234, 88, 12, 0.4) 50%, #02040A 90%);"></div>
+            <div class="galaxy-info tilt-inner">
+              <span class="galaxy-type-tag">Lenticular / Spiral</span>
+              <h3 class="galaxy-name">SOMBRERO GALAXY</h3>
+              <div class="galaxy-meta">
+                <span>Distance: 31M ly</span>
+                <span>Constellation: Virgo</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.5;">Uncanny silhouette with a prominent central bulge and symmetrical rim of cosmic dust.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 7: SPACE MISSIONS TIMELINE
+         ========================================================================== -->
+    <section class="section-spacing" data-section="missions">
+      <div class="cosmic-container">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem;" class="reveal-up">
+          <div>
+            <span class="section-tag">EXPEDITIONS</span>
+            <h2 class="section-title">HUMANITY REACHES <span class="gradient-text">BEYOND</span></h2>
+            <p class="section-subtitle">Milestone spacecraft that opened the heavens to human knowledge.</p>
+          </div>
+          <a href="space-missions.html" class="cosmic-btn cosmic-btn-secondary">ALL MISSIONS →</a>
+        </div>
+
+        <div class="missions-timeline-container reveal-up delay-2">
+          <div class="missions-horizontal-track">
+            <!-- Sputnik 1 -->
+            <div class="mission-timeline-card tilt-card">
+              <span class="mission-year-badge">1957</span>
+              <h3 class="mission-title">SPUTNIK 1</h3>
+              <span class="mission-agency">Soviet Space Program</span>
+              <p class="mission-desc">The first artificial satellite to orbit Earth, initiating the modern Space Age with its radio beeps.</p>
+              <a href="mission-details.html?mission=sputnik-1" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.75rem;">VIEW FLIGHT LOG →</a>
+            </div>
+
+            <!-- Apollo 11 -->
+            <div class="mission-timeline-card tilt-card">
+              <span class="mission-year-badge">1969</span>
+              <h3 class="mission-title">APOLLO 11</h3>
+              <span class="mission-agency">NASA</span>
+              <p class="mission-desc">First crewed lunar landing. Neil Armstrong and Buzz Aldrin step onto the lunar regolith of Sea of Tranquility.</p>
+              <a href="mission-details.html?mission=apollo-11" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.75rem;">VIEW FLIGHT LOG →</a>
+            </div>
+
+            <!-- Voyager 1 -->
+            <div class="mission-timeline-card tilt-card">
+              <span class="mission-year-badge">1977</span>
+              <h3 class="mission-title">VOYAGER 1</h3>
+              <span class="mission-agency">NASA / JPL</span>
+              <p class="mission-desc">Humanity's most distant ambassador. Carrying the Golden Record into interstellar space over 24 billion km from Earth.</p>
+              <a href="mission-details.html?mission=voyager-1" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.75rem;">VIEW FLIGHT LOG →</a>
+            </div>
+
+            <!-- JWST -->
+            <div class="mission-timeline-card tilt-card">
+              <span class="mission-year-badge">2021</span>
+              <h3 class="mission-title">JAMES WEBB</h3>
+              <span class="mission-agency">NASA / ESA / CSA</span>
+              <p class="mission-desc">Infrared flagship observatory positioned at Sun-Earth L2 Lagrange point, peering back to cosmic dawn.</p>
+              <a href="mission-details.html?mission=jwst" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.75rem;">VIEW FLIGHT LOG →</a>
+            </div>
+
+            <!-- Artemis -->
+            <div class="mission-timeline-card tilt-card">
+              <span class="mission-year-badge">2026+</span>
+              <h3 class="mission-title">ARTEMIS PROGRAM</h3>
+              <span class="mission-agency">NASA / International</span>
+              <p class="mission-desc">Landing the next astronauts on the lunar South Pole and constructing the Gateway orbital space station.</p>
+              <a href="mission-details.html?mission=artemis" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.75rem;">VIEW FLIGHT LOG →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 8: ASTRONAUT PIONEERS
+         ========================================================================== -->
+    <section class="section-spacing" data-section="astronauts">
+      <div class="cosmic-container">
+        <div style="text-align: center;" class="reveal-up">
+          <span class="section-tag">HUMAN ODYSSEY</span>
+          <h2 class="section-title">THE HUMANS WHO <span class="gradient-text">LEFT EARTH</span></h2>
+          <p class="section-subtitle">Courageous explorers who dared to break the gravitational bonds of our home planet.</p>
+        </div>
+
+        <div class="astronauts-grid">
+          <!-- Neil Armstrong -->
+          <div class="astronaut-card tilt-card reveal-up delay-1">
+            <div class="astronaut-portrait" style="background-image: radial-gradient(circle at 50% 30%, rgba(0, 168, 255, 0.3), transparent 70%), linear-gradient(180deg, #1E293B, #02040A);"></div>
+            <div class="astronaut-details tilt-inner">
+              <span class="astronaut-mission-badge">APOLLO 11 COMMANDER</span>
+              <h3 class="astronaut-name">NEIL ARMSTRONG</h3>
+              <p class="astronaut-achievement">"One small step for man, one giant leap for mankind." First human to walk on the lunar surface.</p>
+              <a href="astronaut-details.html?astronaut=neil-armstrong" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.55rem 1.2rem; font-size: 0.75rem;">BIOGRAPHY →</a>
+            </div>
+          </div>
+
+          <!-- Yuri Gagarin -->
+          <div class="astronaut-card tilt-card reveal-up delay-2">
+            <div class="astronaut-portrait" style="background-image: radial-gradient(circle at 50% 30%, rgba(220, 38, 38, 0.3), transparent 70%), linear-gradient(180deg, #1E293B, #02040A);"></div>
+            <div class="astronaut-details tilt-inner">
+              <span class="astronaut-mission-badge">VOSTOK 1 PILOT</span>
+              <h3 class="astronaut-name">YURI GAGARIN</h3>
+              <p class="astronaut-achievement">First human in orbital space (April 12, 1961). Circled Earth in 108 minutes: "Poyekhali!"</p>
+              <a href="astronaut-details.html?astronaut=yuri-gagarin" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.55rem 1.2rem; font-size: 0.75rem;">BIOGRAPHY →</a>
+            </div>
+          </div>
+
+          <!-- Kalpana Chawla -->
+          <div class="astronaut-card tilt-card reveal-up delay-3">
+            <div class="astronaut-portrait" style="background-image: radial-gradient(circle at 50% 30%, rgba(147, 51, 234, 0.3), transparent 70%), linear-gradient(180deg, #1E293B, #02040A);"></div>
+            <div class="astronaut-details tilt-inner">
+              <span class="astronaut-mission-badge">STS-87 / STS-107</span>
+              <h3 class="astronaut-name">KALPANA CHAWLA</h3>
+              <p class="astronaut-achievement">Distinguished aerospace engineer, mission specialist, and first woman of Indian heritage in space.</p>
+              <a href="astronaut-details.html?astronaut=kalpana-chawla" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.55rem 1.2rem; font-size: 0.75rem;">BIOGRAPHY →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 9: SPACE TIMELINE PREVIEW
+         ========================================================================== -->
+    <section class="section-spacing" data-section="timeline-preview">
+      <div class="cosmic-container">
+        <div style="text-align: center;" class="reveal-up">
+          <span class="section-tag">CHRONOLOGY OF EXISTENCE</span>
+          <h2 class="section-title">THE COSMIC <span class="gradient-text">TIMELINE</span></h2>
+          <p class="section-subtitle">From the primordial quantum fluctuation of the Big Bang to the deep stellar future.</p>
+        </div>
+
+        <div class="timeline-vertical">
+          <!-- 13.8B -->
+          <div class="timeline-item reveal-left">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">13.8 BILLION YEARS AGO</span>
+              <h3 class="timeline-title">THE BIG BANG</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">Spacetime, matter, and the fundamental forces burst into existence from an initial singularity.</p>
+            </div>
+          </div>
+
+          <!-- 4.6B -->
+          <div class="timeline-item reveal-right delay-1">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">4.6 BILLION YEARS AGO</span>
+              <h3 class="timeline-title">FORMATION OF THE SUN</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">A molecular cloud of gas and interstellar dust collapses under gravity, igniting solar nuclear fusion.</p>
+            </div>
+          </div>
+
+          <!-- 1969 -->
+          <div class="timeline-item reveal-left delay-2">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">1969 CE</span>
+              <h3 class="timeline-title">APOLLO 11 LUNAR LANDING</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">Humans leave footmarks in the dust of another celestial sphere for the first time in natural history.</p>
+            </div>
+          </div>
+
+          <!-- Future -->
+          <div class="timeline-item reveal-right delay-3">
+            <div class="timeline-node"></div>
+            <div class="timeline-content tilt-card">
+              <span class="timeline-era">FUTURE ERA</span>
+              <h3 class="timeline-title">HUMANITY BEYOND EARTH</h3>
+              <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6;">Interplanetary civilization on Mars, asteroid mining in the belt, and interstellar probes to Alpha Centauri.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;" class="reveal-up">
+          <a href="space-timeline.html" class="cosmic-btn cosmic-btn-secondary">EXPLORE COMPLETE CHRONOLOGY →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 10: CINEMATIC CALL TO ACTION
+         ========================================================================== -->
+    <section class="section-spacing" data-section="cta">
+      <div class="cosmic-container">
+        <div class="cta-universe-banner reveal-scale">
+          <span class="section-tag" style="background: rgba(0, 168, 255, 0.15);">THE COSMIC INVITATION</span>
+          <h2 class="cta-title">THE UNIVERSE<br>HAS ONLY JUST BEGUN.</h2>
+          <p class="cta-desc">
+            We are a way for the cosmos to know itself. Step aboard, explore thousands of astrophysical records, and uncover the grand architecture of reality.
+          </p>
+          <a href="solar-system.html" class="cosmic-btn cosmic-btn-primary">
+            START EXPLORING <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 11: THE GRAND CELESTIAL ORRERY (REAL-TIME SOLAR SYSTEM SIMULATION)
+         ========================================================================== -->
+    <section class="section-spacing grand-orrery-section" data-section="orrery">
+      <div class="cosmic-container">
+        <div style="text-align: center;" class="reveal-up">
+          <span class="section-tag">REAL-TIME GRAVITATIONAL CHOREOGRAPHY</span>
+          <h2 class="section-title">THE GRAND <span class="gradient-text">CELESTIAL ORRERY</span></h2>
+          <p class="section-subtitle">
+            Watch the eight planets, moons, and the asteroid belt revolve around the glowing Sun in real-time Keplerian orbital physics. Switch perspectives, adjust time warp, or lock onto any world for live telemetry.
+          </p>
+        </div>
+
+        <div class="orrery-stage-wrapper reveal-up delay-1">
+          <!-- Control Console Bar -->
+          <div class="orrery-controls-bar">
+            <!-- Left: View Perspective -->
+            <div class="orrery-btn-group">
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); margin-right: 0.25rem;">VIEW:</span>
+              <button class="orrery-btn active" data-orrery-view="3d">3D PERSPECTIVE</button>
+              <button class="orrery-btn" data-orrery-view="top">TOP-DOWN</button>
+            </div>
+
+            <!-- Center: Time Warp -->
+            <div class="orrery-btn-group">
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); margin-right: 0.25rem;">TIME WARP:</span>
+              <button class="orrery-btn" data-orrery-warp="0">PAUSE ||</button>
+              <button class="orrery-btn active" data-orrery-warp="1">1x NORMAL</button>
+              <button class="orrery-btn" data-orrery-warp="4">4x ORBIT</button>
+              <button class="orrery-btn" data-orrery-warp="12">12x WARP</button>
+            </div>
+
+            <!-- Right: Display Layers -->
+            <div class="orrery-btn-group">
+              <button class="orrery-btn active" id="toggle-orrery-orbits">ORBITS</button>
+              <button class="orrery-btn active" id="toggle-orrery-trails">TRAILS</button>
+              <button class="orrery-btn active" id="toggle-orrery-labels">LABELS</button>
+            </div>
+          </div>
+
+          <!-- Main Interactive Canvas Stage -->
+          <div class="orrery-canvas-container">
+            <canvas id="orrery-canvas"></canvas>
+
+            <!-- Floating Holographic HUD Telemetry Card -->
+            <div class="orrery-hud-panel active" id="orrery-hud-panel">
+              <h3 class="orrery-hud-title">EARTH</h3>
+              <div class="orrery-hud-tag">LIVING BLUE OASIS</div>
+              <div class="orrery-hud-specs">
+                <div class="orrery-hud-specs-row">
+                  <span>DISTANCE:</span>
+                  <strong class="hud-dist">1.00 AU (149.6M km)</strong>
+                </div>
+                <div class="orrery-hud-specs-row">
+                  <span>ORBITAL SPEED:</span>
+                  <strong class="hud-vel">29.8 km/s</strong>
+                </div>
+                <div class="orrery-hud-specs-row">
+                  <span>TEMPERATURE:</span>
+                  <strong class="hud-temp">15°C Mean</strong>
+                </div>
+                <div class="orrery-hud-specs-row">
+                  <span>MOONS:</span>
+                  <strong class="hud-moons">1 (The Moon)</strong>
+                </div>
+              </div>
+              <a href="planet-details.html?planet=earth" class="orrery-hud-btn">
+                ANALYZE EARTH <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Bottom Planet Quick Selector -->
+          <div class="orrery-planet-selector">
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); align-self: center; margin-right: 0.5rem; white-space: nowrap;">QUICK FOCUS:</span>
+            <button class="orrery-planet-chip" data-orrery-select="mercury"><span class="orrery-planet-chip-dot" style="background: #CBD5E1;"></span>MERCURY</button>
+            <button class="orrery-planet-chip" data-orrery-select="venus"><span class="orrery-planet-chip-dot" style="background: #FDE68A;"></span>VENUS</button>
+            <button class="orrery-planet-chip active" data-orrery-select="earth"><span class="orrery-planet-chip-dot" style="background: #38BDF8;"></span>EARTH</button>
+            <button class="orrery-planet-chip" data-orrery-select="mars"><span class="orrery-planet-chip-dot" style="background: #F87171;"></span>MARS</button>
+            <button class="orrery-planet-chip" data-orrery-select="jupiter"><span class="orrery-planet-chip-dot" style="background: #FBBF24;"></span>JUPITER</button>
+            <button class="orrery-planet-chip" data-orrery-select="saturn"><span class="orrery-planet-chip-dot" style="background: #FDE047;"></span>SATURN</button>
+            <button class="orrery-planet-chip" data-orrery-select="uranus"><span class="orrery-planet-chip-dot" style="background: #A7F3D0;"></span>URANUS</button>
+            <button class="orrery-planet-chip" data-orrery-select="neptune"><span class="orrery-planet-chip-dot" style="background: #60A5FA;"></span>NEPTUNE</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       ENORMOUS CINEMATIC FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-horizon-glow"></div>
+    <div class="cosmic-container">
+      <div class="footer-top">
+        <div class="footer-callout">
+          <h3>READY TO EXPLORE THE UNKNOWN?</h3>
+          <p>Join millions across Earth discovering worlds beyond our atmosphere.</p>
+        </div>
+        <a href="solar-system.html" class="cosmic-btn cosmic-btn-primary">
+          LAUNCH MISSION <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+            <span class="logo-sub">Explore the Unknown</span>
+          </a>
+          <p class="footer-about-text">
+            An ultra-premium interactive astronomical observatory platform engineered for scientific wonder, documentary realism, and interstellar discovery.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan);">
+            STATION STATUS: ONLINE • ALL ARRAYS OPERATIONAL
+          </div>
+        </div>
+
+        <!-- Col 2: Explore -->
+        <div>
+          <h4 class="footer-col-title">EXPLORE</h4>
+          <ul class="footer-links">
+            <li><a href="solar-system.html">Solar System</a></li>
+            <li><a href="planets.html">All Planets</a></li>
+            <li><a href="galaxies.html">Galaxies Database</a></li>
+            <li><a href="black-holes.html">Black Hole Singularities</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Discover -->
+        <div>
+          <h4 class="footer-col-title">DISCOVER</h4>
+          <ul class="footer-links">
+            <li><a href="space-missions.html">Space Missions</a></li>
+            <li><a href="astronauts.html">Astronaut Pioneers</a></li>
+            <li><a href="space-timeline.html">Cosmic Timeline</a></li>
+            <li><a href="search.html">Search Terminal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Project -->
+        <div>
+          <h4 class="footer-col-title">OBSERVATORY</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Project</a></li>
+            <li><a href="planet-details.html?planet=jupiter">Featured Planet</a></li>
+            <li><a href="galaxy-details.html?galaxy=andromeda">Featured Galaxy</a></li>
+            <li><a href="mission-details.html?mission=jwst">Featured Mission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Telemetry Dispatch -->
+        <div>
+          <h4 class="footer-col-title">TELEMETRY DISPATCH</h4>
+          <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.6;">
+            Subscribe to receive real-time planetary observations, rover alerts, and deep-space telemetry direct to your interface.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Telemetry channel confirmed. You are registered on the COSMOS frequency.');">
+            <input type="email" placeholder="Enter observer email..." class="footer-input" required>
+            <button type="submit" class="cosmic-btn cosmic-btn-primary" style="padding: 0.75rem 1.25rem;">JOIN</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>COSMOS © 2026 • EXPLORE BEYOND THE EDGE OF HUMANITY.</div>
+        <div>DESIGNED WITH NASA & SCIENTIFIC OBSERVATION DATA</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/stars.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/planets.js"></script>
+  <script src="js/orrery.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

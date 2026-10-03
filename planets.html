@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="COSMOS Planetary Catalog â€” Comprehensive astrophysical database of terrestrial worlds, gas giants, ice giants, and dwarf planets.">
+  <title>Planets Database â€” COSMOS Space Exploration</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particle-canvas"></canvas>
+  <div class="cosmic-noise-overlay"></div>
+  <div class="shooting-star-container"></div>
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-ring"></div>
+
+  <!-- Site Header -->
+  <header class="site-header" role="banner">
+    <div class="cosmic-container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="COSMOS Homepage">
+        <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+        <span class="logo-sub">Explore the Unknown</span>
+      </a>
+
+      <nav class="main-nav" role="navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="solar-system.html" class="nav-link">Solar System</a></li>
+          <li class="nav-item"><a href="planets.html" class="nav-link active">Planets</a></li>
+          <li class="nav-item"><a href="black-holes.html" class="nav-link">Black Holes</a></li>
+          <li class="nav-item"><a href="galaxies.html" class="nav-link">Galaxies</a></li>
+          <li class="nav-item"><a href="space-missions.html" class="nav-link">Missions</a></li>
+          <li class="nav-item"><a href="astronauts.html" class="nav-link">Astronauts</a></li>
+          <li class="nav-item"><a href="space-timeline.html" class="nav-link">Timeline</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="search.html" class="icon-btn" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a>
+        <button class="sound-toggle" aria-label="Toggle Sound"><span class="sound-dot"></span><span class="sound-text">SOUND OFF</span></button>
+        <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" role="dialog">
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item"><a href="solar-system.html" class="mobile-nav-link">Solar System</a></li>
+      <li class="mobile-nav-item"><a href="planets.html" class="mobile-nav-link active">Planets</a></li>
+      <li class="mobile-nav-item"><a href="black-holes.html" class="mobile-nav-link">Black Holes</a></li>
+      <li class="mobile-nav-item"><a href="galaxies.html" class="mobile-nav-link">Galaxies</a></li>
+      <li class="mobile-nav-item"><a href="space-missions.html" class="mobile-nav-link">Missions</a></li>
+      <li class="mobile-nav-item"><a href="astronauts.html" class="mobile-nav-link">Astronauts</a></li>
+      <li class="mobile-nav-item"><a href="space-timeline.html" class="mobile-nav-link">Timeline</a></li>
+      <li class="mobile-nav-item"><a href="search.html" class="mobile-nav-link">Search Terminal</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="cosmic-container">
+        <span class="section-tag reveal-up">CELESTIAL SURVEY</span>
+        <h1 class="section-title reveal-up delay-1">WORLDS OF OUR <span class="gradient-text">SOLAR SYSTEM</span></h1>
+        <p class="section-subtitle reveal-up delay-2">
+          From sun-scorched iron deserts to majestic hydrogen giants and icy dwarf outliers, explore the distinct physical realities of our celestial neighborhood.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Navigation Tabs -->
+    <section class="section-spacing" style="padding-top: 0;">
+      <div class="cosmic-container">
+        <div class="filter-tabs reveal-up">
+          <button class="filter-btn active" data-filter="all">ALL WORLDS</button>
+          <button class="filter-btn" data-filter="terrestrial">TERRESTRIAL</button>
+          <button class="filter-btn" data-filter="gas-giant">GAS GIANTS</button>
+          <button class="filter-btn" data-filter="ice-giant">ICE GIANTS</button>
+          <button class="filter-btn" data-filter="dwarf">DWARF PLANETS</button>
+        </div>
+
+        <!-- Planet Catalog Grid -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+
+          <!-- Mercury -->
+          <div class="planet-catalog-card glass-card tilt-card reveal-up delay-1" data-category="terrestrial" style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #CBD5E1, #64748B, #1E293B); box-shadow: 0 0 25px rgba(148, 163, 184, 0.5); flex-shrink: 0;"></div>
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); text-transform: uppercase; letter-spacing: 0.15em;">Terrestrial World</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--starlight-white); line-height: 1.1;">MERCURY</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+              Smallest planet and closest to the Sun. Vast iron core occupying 85% of its planetary radius with extreme day-night temperature swings.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div><span style="color: var(--soft-space-gray); display: block;">DIAMETER:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">4,879 km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">DISTANCE:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">57.9M km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">MOONS:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">0</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">TEMPERATURE:</span><strong style="color: var(--accent-red); font-size: 0.85rem;">-180Â°C to 430Â°C</strong></div>
+            </div>
+            <a href="planet-details.html?planet=mercury" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.75rem; font-size: 0.8rem; width: 100%;">ACCESS TELEMETRY â†’</a>
+          </div>
+
+          <!-- Venus -->
+          <div class="planet-catalog-card glass-card tilt-card reveal-up delay-2" data-category="terrestrial" style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FDE68A, #D97706, #78350F); box-shadow: 0 0 25px rgba(217, 119, 6, 0.5); flex-shrink: 0;"></div>
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); text-transform: uppercase; letter-spacing: 0.15em;">Terrestrial World</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--starlight-white); line-height: 1.1;">VENUS</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+              Earth's volcanic twin encased in a runaway supercritical carbon dioxide atmosphere, hurricane-speed sulfuric clouds, and furnace heat.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div><span style="color: var(--soft-space-gray); display: block;">DIAMETER:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">12,104 km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">DISTANCE:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">108.2M km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">MOONS:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">0</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">TEMPERATURE:</span><strong style="color: var(--accent-red); font-size: 0.85rem;">465Â°C</strong></div>
+            </div>
+            <a href="planet-details.html?planet=venus" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.75rem; font-size: 0.8rem; width: 100%;">ACCESS TELEMETRY â†’</a>
+          </div>
+
+          <!-- Earth -->
+          <div class="planet-catalog-card glass-card tilt-card reveal-up delay-3" data-category="terrestrial" style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #38BDF8, #0284C7, #0F172A); box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); flex-shrink: 0;"></div>
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); text-transform: uppercase; letter-spacing: 0.15em;">Habitable World</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--starlight-white); line-height: 1.1;">EARTH</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+              The cradle of life. Dynamic ocean world with active plate tectonics, nitrogen-oxygen balance, and a protective magnetosphere.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div><span style="color: var(--soft-space-gray); display: block;">DIAMETER:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">12,742 km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">DISTANCE:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">149.6M km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">MOONS:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">1 (Luna)</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">TEMPERATURE:</span><strong style="color: var(--cosmic-cyan); font-size: 0.85rem;">15Â°C Mean</strong></div>
+            </div>
+            <a href="planet-details.html?planet=earth" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.75rem; font-size: 0.8rem; width: 100%;">ACCESS TELEMETRY â†’</a>
+          </div>
+
+          <!-- Mars -->
+          <div class="planet-catalog-card glass-card tilt-card reveal-up delay-1" data-category="terrestrial" style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #F87171, #DC2626, #450A0A); box-shadow: 0 0 25px rgba(220, 38, 38, 0.5); flex-shrink: 0;"></div>
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); text-transform: uppercase; letter-spacing: 0.15em;">Terrestrial World</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--starlight-white); line-height: 1.1;">MARS</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+              The Red Planet, hosting the solar system's largest canyon and volcano Olympus Mons, alongside extensive polar water ice caps.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div><span style="color: var(--soft-space-gray); display: block;">DIAMETER:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">6,779 km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">DISTANCE:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">227.9M km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">MOONS:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">2</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">TEMPERATURE:</span><strong style="color: var(--cosmic-blue); font-size: 0.85rem;">-60Â°C Mean</strong></div>
+            </div>
+            <a href="planet-details.html?planet=mars" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.75rem; font-size: 0.8rem; width: 100%;">ACCESS TELEMETRY â†’</a>
+          </div>
+
+          <!-- Jupiter -->
+          <div class="planet-catalog-card glass-card tilt-card reveal-up delay-2" data-category="gas-giant" style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: repeating-linear-gradient(0deg, #FDE68A, #D97706 15px, #92400E 30px, #FEF3C7 45px); box-shadow: 0 0 30px rgba(217, 119, 6, 0.5); flex-shrink: 0;"></div>
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.15em;">Gas Giant</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--starlight-white); line-height: 1.1;">JUPITER</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+              Monarch of the planets, holding twice the mass of all other planets combined, with 95 moons and an immense magnetosphere.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div><span style="color: var(--soft-space-gray); display: block;">DIAMETER:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">139,820 km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">DISTANCE:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">778.5M km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">MOONS:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">95</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">TEMPERATURE:</span><strong style="color: var(--cosmic-blue); font-size: 0.85rem;">-110Â°C</strong></div>
+            </div>
+            <a href="planet-details.html?planet=jupiter" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.75rem; font-size: 0.8rem; width: 100%;">ACCESS TELEMETRY â†’</a>
+          </div>
+
+          <!-- Saturn -->
+          <div class="planet-catalog-card glass-card tilt-card reveal-up delay-3" data-category="gas-giant" style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FDE047, #CA8A04, #713F12); box-shadow: 0 0 25px rgba(202, 138, 4, 0.4); flex-shrink: 0; position: relative;">
+                <div class="saturn-ring" style="width: 100px; height: 26px; top: 22px; left: -15px;"></div>
+              </div>
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.15em;">Gas Giant</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--starlight-white); line-height: 1.1;">SATURN</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+              Spectacular ring architecture made of billions of ice chunks, orbited by 146 moons including methane-rich Titan.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div><span style="color: var(--soft-space-gray); display: block;">DIAMETER:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">116,460 km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">DISTANCE:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">1.434B km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">MOONS:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">146</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">TEMPERATURE:</span><strong style="color: var(--cosmic-blue); font-size: 0.85rem;">-140Â°C</strong></div>
+            </div>
+            <a href="planet-details.html?planet=saturn" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.75rem; font-size: 0.8rem; width: 100%;">ACCESS TELEMETRY â†’</a>
+          </div>
+
+          <!-- Uranus -->
+          <div class="planet-catalog-card glass-card tilt-card reveal-up delay-1" data-category="ice-giant" style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #A7F3D0, #0D9488, #115E59); box-shadow: 0 0 25px rgba(13, 148, 136, 0.5); flex-shrink: 0;"></div>
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); text-transform: uppercase; letter-spacing: 0.15em;">Ice Giant</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--starlight-white); line-height: 1.1;">URANUS</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+              Aquamarine ice giant tilted 98 degrees on its axis, rolling around the Sun with cold atmospheric temperatures dropping to -224Â°C.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div><span style="color: var(--soft-space-gray); display: block;">DIAMETER:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">50,724 km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">DISTANCE:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">2.871B km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">MOONS:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">28</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">TEMPERATURE:</span><strong style="color: var(--cosmic-cyan); font-size: 0.85rem;">-224Â°C</strong></div>
+            </div>
+            <a href="planet-details.html?planet=uranus" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.75rem; font-size: 0.8rem; width: 100%;">ACCESS TELEMETRY â†’</a>
+          </div>
+
+          <!-- Neptune -->
+          <div class="planet-catalog-card glass-card tilt-card reveal-up delay-2" data-category="ice-giant" style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #60A5FA, #2563EB, #1E3A8A); box-shadow: 0 0 25px rgba(37, 99, 235, 0.6); flex-shrink: 0;"></div>
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cosmic-cyan); text-transform: uppercase; letter-spacing: 0.15em;">Ice Giant</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--starlight-white); line-height: 1.1;">NEPTUNE</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+              Deep azure world plagued by supersonic methane gales breaking the sound barrier at speeds up to 2,100 km/h.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div><span style="color: var(--soft-space-gray); display: block;">DIAMETER:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">49,244 km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">DISTANCE:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">4.495B km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">MOONS:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">16</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">TEMPERATURE:</span><strong style="color: var(--cosmic-cyan); font-size: 0.85rem;">-218Â°C</strong></div>
+            </div>
+            <a href="planet-details.html?planet=neptune" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.75rem; font-size: 0.8rem; width: 100%;">ACCESS TELEMETRY â†’</a>
+          </div>
+
+          <!-- Pluto -->
+          <div class="planet-catalog-card glass-card tilt-card reveal-up delay-3" data-category="dwarf" style="display: flex; flex-direction: column;">
+            <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #E2E8F0, #A1A1AA, #3F3F46); box-shadow: 0 0 20px rgba(161, 161, 170, 0.4); flex-shrink: 0;"></div>
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--soft-space-gray); text-transform: uppercase; letter-spacing: 0.15em;">Dwarf Planet</span>
+                <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--starlight-white); line-height: 1.1;">PLUTO</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--soft-space-gray); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1;">
+              Monarch of the Kuiper Belt, sporting heart-shaped nitrogen glaciers, towering water-ice mountain ranges, and binary moon Charon.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;">
+              <div><span style="color: var(--soft-space-gray); display: block;">DIAMETER:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">2,376 km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">DISTANCE:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">5.906B km</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">MOONS:</span><strong style="color: var(--starlight-white); font-size: 0.85rem;">5</strong></div>
+              <div><span style="color: var(--soft-space-gray); display: block;">TEMPERATURE:</span><strong style="color: var(--cosmic-cyan); font-size: 0.85rem;">-232Â°C</strong></div>
+            </div>
+            <a href="planet-details.html?planet=pluto" class="cosmic-btn cosmic-btn-secondary" style="padding: 0.75rem; font-size: 0.8rem; width: 100%;">ACCESS TELEMETRY â†’</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <!-- ==========================================================================
+       ENORMOUS CINEMATIC FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-horizon-glow"></div>
+    <div class="cosmic-container">
+      <div class="footer-top">
+        <div class="footer-callout">
+          <h3>READY TO EXPLORE THE UNKNOWN?</h3>
+          <p>Join millions across Earth discovering worlds beyond our atmosphere.</p>
+        </div>
+        <a href="solar-system.html" class="cosmic-btn cosmic-btn-primary">
+          LAUNCH MISSION <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-main">COSM<span class="accent-orbit">O</span>S</span>
+            <span class="logo-sub">Explore the Unknown</span>
+          </a>
+          <p class="footer-about-text">
+            An ultra-premium interactive astronomical observatory platform engineered for scientific wonder, documentary realism, and interstellar discovery.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cosmic-cyan);">
+            STATION STATUS: ONLINE • ALL ARRAYS OPERATIONAL
+          </div>
+        </div>
+
+        <!-- Col 2: Explore -->
+        <div>
+          <h4 class="footer-col-title">EXPLORE</h4>
+          <ul class="footer-links">
+            <li><a href="solar-system.html">Solar System</a></li>
+            <li><a href="planets.html">All Planets</a></li>
+            <li><a href="galaxies.html">Galaxies Database</a></li>
+            <li><a href="black-holes.html">Black Hole Singularities</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Discover -->
+        <div>
+          <h4 class="footer-col-title">DISCOVER</h4>
+          <ul class="footer-links">
+            <li><a href="space-missions.html">Space Missions</a></li>
+            <li><a href="astronauts.html">Astronaut Pioneers</a></li>
+            <li><a href="space-timeline.html">Cosmic Timeline</a></li>
+            <li><a href="search.html">Search Terminal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Project -->
+        <div>
+          <h4 class="footer-col-title">OBSERVATORY</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Project</a></li>
+            <li><a href="planet-details.html?planet=jupiter">Featured Planet</a></li>
+            <li><a href="galaxy-details.html?galaxy=andromeda">Featured Galaxy</a></li>
+            <li><a href="mission-details.html?mission=jwst">Featured Mission</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Telemetry Dispatch -->
+        <div>
+          <h4 class="footer-col-title">TELEMETRY DISPATCH</h4>
+          <p style="font-size: 0.85rem; color: var(--soft-space-gray); line-height: 1.6;">
+            Subscribe to receive real-time planetary observations, rover alerts, and deep-space telemetry direct to your interface.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Telemetry channel confirmed. You are registered on the COSMOS frequency.');">
+            <input type="email" placeholder="Enter observer email..." class="footer-input" required>
+            <button type="submit" class="cosmic-btn cosmic-btn-primary" style="padding: 0.75rem 1.25rem;">JOIN</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>COSMOS © 2026 • EXPLORE BEYOND THE EDGE OF HUMANITY.</div>
+        <div>DESIGNED WITH NASA & SCIENTIFIC OBSERVATION DATA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/stars.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/planets.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
